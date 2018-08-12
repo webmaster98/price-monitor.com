@@ -439,3 +439,54 @@ id;min_price;max_price;strategy
 The two examples are equivalent. They will set the repricing strategy for the two items with IDs 00-11-22-33 and
 00-11-22-34 to “aggressive” mode, set the minimal price of the former product to 11.99, the maximal price to
 19.99, and leaves the min and max prices of the latter item unchanged.
+
+## Retrieve Reprice Settings
+This method is used to retrieve the reprice settings for products stored in BENY.
+
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| GET           | reprice_settings
+
+#### Argumets :
+
+* arketplace: the marketplace for which new price
+adaptations shall be queried. Please refer to the section
+Common Data Types for admissible values.
+* format (optional): the format in which the data shall be
+returned. Possible values are:
+○ json: the data will be provided in JSON
+key-value pairs,
+○ csv: the data will be provided in a CSV table
+* The default value is json.
+* ids: a (comma-separated) list of of product IDs whose
+settings are to be exported.
+* pformat_dec (optional): price format , 1=interger, 2=float default is 1
+
+
+### Return Success Value:
+
+the settings data in CSV or JSON format as specified in Set Reprice Settings
+
+## Get License Information
+This method can be used to retrieve general information about the BENY license and booked marketplaces.
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| GET           | license
+
+#### Argumets :
+
+no arguments
+
+### Return Success Value:
+
+the license data in JSON format The values of a license include:
+* customer_id: Your BENY customer ID.
+* license: Your BENY license
+* start_date: The first day of validity of your license
+* end_date: The date when your BENY license will expire.
+* max_products: The maximum number of products that your allowed to manager with your BENY
+license.
+* marketplaces: A list of marketplaces that you have booked.
+

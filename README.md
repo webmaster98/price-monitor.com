@@ -163,6 +163,17 @@ from the database. If only new products are contained in
 the data, this parameter has to be set to true. Default is
 false.
 *  test (optional): true/false; if set to true, the changes
-will not be applied to the BENY database. This
+will not be applied to the  price monitor database. This
 parameter can be used for developing and testing your import application to see if the data formats are correct
-and will be accepted by BENY. Default is false.
+and will be accepted by  price monitor. Default is false.
+
+### Return Success Value:
+
+A JSON dictionary containing the number of inserts, updates and
+deletions that have been performed:
+```json
+{'inserts': <#inserts>,
+'updates': <#updates>,
+'deletions': <#deletions>,
+'unchanged': <#unchanged>}
+```

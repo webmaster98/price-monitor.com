@@ -174,7 +174,7 @@ deletions that have been performed:
 ```json
 { 
   "inserts": "<#inserts>",
-  'updates": "<#updates>",
+  "updates": "<#updates>",
   "deletions": "<#deletions>",
   "unchanged": "<#unchanged>"
  }

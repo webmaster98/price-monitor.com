@@ -212,5 +212,5 @@ this item
   "discounts": null 
 } 
 ```
-To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ set reprice option to off ( marketplace_settings?marketplace=<MARKETPLACE>&repricing=off ) !!!
+To​ ​avoid​ ​to​ ​initial​ ​articles​ imediatly ​with​ ​default​ ​values​ ​please​ set reprice option to off ( marketplace_settings?marketplace=<MARKETPLACE>&repricing=off ) !!!
 

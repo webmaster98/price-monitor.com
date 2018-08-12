@@ -94,7 +94,20 @@ price could be calculated are returned. JSON format: key-value pairs of the form
 [{'id': '<item_id>','new_price': <newPrice>}]
 CSV format: Column-separated by semicolons (;). The column names are id (the ite
 new price update) and old_price (the old current price)
-
-
-
+  
+```
+curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplace=google.de" -k | jq
+[
+  {
+    "id": "325572",
+    "new_price": "",
+    "old_price": ""
+  },
+  {
+    "id": "325575",
+    "new_price": "",
+    "old_price": ""
+  }
+]
+```
 

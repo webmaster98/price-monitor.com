@@ -179,3 +179,21 @@ deletions that have been performed:
   "unchanged": "<#unchanged>"
  }
 ```
+
+This command updates existing product entries for a particular marketplace, or performs an initial import of a
+product list into BENY. Existing entries are updated according to your own product id. Data to be imported
+needs to be in a valid CSV format, containing the following columns:
+
+1. id: the product id in your own shop. This needs to be unique for every item, otherwise BENY will
+report an error.
+2. ean: the EAN code for the product. For some marketplaces, an EAN number is required for robustly
+identifying your products on that marketplace.
+3. id_on_marketplace: the marketplace-specific ID of this product, e.g. the ASIN number for Amazon.
+4. category: the category the respective item belongs to in your shop
+5. mpn: Manufacturer Part Number
+6. manufacturer: Manufacturer of the item
+7. model: Model name of the product given by the manufacturer
+8. name_on_marketplace: The product name under which the item appears on the marketplace. The more
+this item
+9. min_price: the minimal price of the item that will never be undersold
+10.max_price: the maximal price of the item that will never be oversold. The CSV data needs to be transferred in the body of the HTTP POST method.

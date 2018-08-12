@@ -196,4 +196,5 @@ identifying your products on that marketplace.
 8. name_on_marketplace: The product name under which the item appears on the marketplace. The more
 this item
 9. min_price: the minimal price of the item that will never be undersold
+
 10.max_price: the maximal price of the item that will never be oversold. The CSV data needs to be transferred in the body of the HTTP POST method.

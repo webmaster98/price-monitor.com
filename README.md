@@ -184,10 +184,10 @@ deletions that have been performed:
 ```
 
 This command updates existing product entries for a particular marketplace, or performs an initial import of a
-product list into BENY. Existing entries are updated according to your own product id. Data to be imported
+product list into price monitor. Existing entries are updated according to your own product id. Data to be imported
 needs to be in a valid CSV format, containing the following columns:
 
-1. id: the product id in your own shop. This needs to be unique for every item, otherwise BENY will
+1. id: the product id in your own shop. This needs to be unique for every item, otherwise  price monitor will
 report an error.
 2. ean: the EAN code for the product. For some marketplaces, an EAN number is required for robustly
 identifying your products on that marketplace.
@@ -267,11 +267,11 @@ column in the CSV data or JSON dictionary keys):
 *  MODEL: the model of the product
 *  EAN: the EAN code of the product
 *  MPN: the Manufacturer Part Number of the product, if any.
-*  STATUS: the current status of the product in BENY
+*  STATUS: the current status of the product in  price monitor
 *  RANKING: the ranking of the offer on the respective marketplace.
 *  SHIPPING COSTS: the shipping costs of the offer.
 *  SHOP: the name of the competitor (or the name of the own shop)
-*  NEW PRICE: the price update suggestion by BENY.
+*  NEW PRICE: the price update suggestion by  price monitor.
 *  OLD PRICE: the the current price listed on the marketplace.
 *  PRICE CHANGE: the difference between old price and new price (absolute and relative)
 *  LAST UPDATE: the timestamp of the most recent update
@@ -333,7 +333,7 @@ made, this method must be called once to initialize a marketplace.
 
 *  marketplace: the marketplace from which the products shall be exported
 Please refer to the section Common Data Types for admissible values.
-*  repricing={on,off}: whether the repricing functionality of BENY shall
+*  repricing={on,off}: whether the repricing functionality of  price monitor shall
 be switched on of off. If you only want to observe the marketplace
 without identification and repricing of own products, set this to off.
 Default is on.
@@ -405,11 +405,11 @@ cents
 6. round_patterns: a comma-separated list of round patterns, for instance *5,*0 for prices. Caution: If
 the CSV file itself is comma-separated, this must be escaped by a string sequence!
 7. If set to none, rounding is disabled.
-8. ranking: the desired ranking that BENY tries to achieve, e.g. 1 for the highest rank.
+8. ranking: the desired ranking that  price monitor tries to achieve, e.g. 1 for the highest rank.
 9. shipping_costs: (true/false) whether or not shipping costs should be taken into account
 10.rating: (true/false) whether or not the customer ratings should be taken into account
 11. availability: (integer) the number of days a competitor needs for shipping an item until the item gets
-considered “unavailable” by BENY. If none, availability will not be taken into account at all.
+considered “unavailable” by  price monitor. If none, availability will not be taken into account at all.
 12. discounts: how discounts or additions should be treated:
 ○ none: discounts and additions will not be taken into account.
 ○ absolute: discounts and additions will be considered absolute numbers
@@ -441,7 +441,7 @@ The two examples are equivalent. They will set the repricing strategy for the tw
 19.99, and leaves the min and max prices of the latter item unchanged.
 
 ## Retrieve Reprice Settings
-This method is used to retrieve the reprice settings for products stored in BENY.
+This method is used to retrieve the reprice settings for products stored in  price monitor.
 
 
 | HTTP request method:      |   Method       
@@ -469,7 +469,7 @@ settings are to be exported.
 the settings data in CSV or JSON format as specified in Set Reprice Settings
 
 ## Get License Information
-This method can be used to retrieve general information about the BENY license and booked marketplaces.
+This method can be used to retrieve general information about the  price monitor license and booked marketplaces.
 
 | HTTP request method:      |   Method       
 | ------------- |:-------------
@@ -482,11 +482,11 @@ no arguments
 ### Return Success Value:
 
 the license data in JSON format The values of a license include:
-* customer_id: Your BENY customer ID.
-* license: Your BENY license
+* customer_id: Your  price monitor customer ID.
+* license: Your  price monitor license
 * start_date: The first day of validity of your license
-* end_date: The date when your BENY license will expire.
-* max_products: The maximum number of products that your allowed to manager with your BENY
+* end_date: The date when your  price monitor license will expire.
+* max_products: The maximum number of products that your allowed to manager with your  price monitor
 license.
 * marketplaces: A list of marketplaces that you have booked.
 

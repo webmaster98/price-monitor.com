@@ -135,16 +135,88 @@ REQUEST
 4. Turn​ ​repricing​ ​on​ ( see topic 6 ) = marketplace_settings?marketplace=idealo.de&repricing=off
 
 
+3. Export​ ​of​ ​Product​ ​Offers
+Query fields options:
+*  marketplace​ ( Required ) In case required fields not setthe API response :
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  separator​ (“String”,Optional ) -> defaultis comma
+*  format​ (“String”,Optional ) -> defaultis json
+*  sortby​ ​ (“String”, Optional ) -> defaultis ranking
+*  offeridx​ ​ (“integer”,Optional )
+*  ids​ ​ (“String”, Optional ) -> param ids could contain multiple products ids separated by comma
+*  pformat_dec​ ​ ​ (“integer”, Optional ) -> defaultis decimal
+*  exportall​ ​ (“boolean”, Optional ) -> defaultis false
+
+3.1​ ​You​ ​want​ ​to​ ​export​ ​a​ ​dedicated​ ​article
+
+REQUEST: GET
+
+URL: /export?marketplace=idealo.de&exportall=true&ids=<Artikel-iD>"
 
 
+RESPONSE
+```json
+[
+  {
+    "AVAILABILITY": "-1​",
+    "BEST OFFERER": "alternate.de​",
+    "BEST PRICE": 85698​,
+    "CATEGORY": "Deutsch>Kochfelder>Induktion>80​ ​CM​",
+    "EAN": "4242004216421​",
+    "ID": "<Artikel-iD>​",
+    "LAST UPDATE": "2017-10-20T21:46:12.785Z​",
+    "MANUFACTURER": "Neff​",
+    "MODEL": "Neff​ ​TPT6860X​ ​Induktionskochfeld​ ​Autark​ ​T68PT60X0​",
+    "MPN": "",
+    "NEW PRICE":​ ​91899​,
+    "OLD PRICE": 87499​,
+    "PRICE CHANGE": "-44.00​ ​(-5.03%)​",
+    "PRODUCT NAME": "Neff​ ​TPT6860X​ ​Induktionskochfeld​ ​Autark​ ​T68PT60X0​",
+    "RANKING": 5​,
+    "SHIPPING COSTS": 0​,
+    "SHOP": "<YOUR​ ​SHOP​>",
+    "SHOP_URL": "<YOUR​ ​SHOP​ ​URL>​",
+    "STATUS": "ON/OK"​,
+    "TOTAL PRICE": 87499
+  }
+]
+```
+
+### NOTES
+Price formatis integer as default
+
+3.2​ ​You​ ​want​ ​to​ ​export​ ​all​ ​articles​ ​in​ ​decimal​ ​format
+
+REQUEST: GET
+
+URL: /export?marketplace=idealo.de&exportall=true&pformat_dec=2"
 
 
-
-
-
-
-
-
-
+RESPONSE
+```json
+{
+    "AVAILABILITY": "-1",
+    "BEST OFFERER": "elektroshopwagner.de",
+    "BEST PRICE": 450.58,
+    "CATEGORY": "Deutsch>Geschirrspüler>Einbau-​ ​Vollintegrierbar>Breite:​ ​60cm"​,
+    "EAN": "4242004187004​",
+    "ID": "<Artikel-iD>​",
+    "LAST UPDATE": "2017-10-20T21:47:37.726Z​",
+    "MANUFACTURER": "Constructa​",
+    "MODEL": "Constructa​ ​CG4A52V8​ ​Einbaugeschirrspüler​",
+    "MPN": "",
+    "NEW PRICE": 450.57​,
+    "OLD PRICE": 450.63​,
+    "PRICE CHANGE": "0.06​ ​(0.01%)​",
+    "PRODUCT NAME": "Constructa​ ​CG4A52V8​ ​Einbaugeschirrspüler​",
+    "RANKING": 4,
+    "SHIPPING COSTS": 0,
+    "SHOP": "etrona.at",
+    "SHOP_URL": "<YOUR​ ​SHOP​ ​URL>​",
+    "STATUS": "ON/OK",
+    "TOTAL PRICE": 450.63
+}
+]
+```
 
 

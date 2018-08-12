@@ -1,4 +1,4 @@
-## Intro
+## Intro best practice 
 
 api API HTTP request need to use the url https://price-monitor.com/api/prm/login/​<API-KEY>/
 
@@ -34,6 +34,7 @@ RESPONSE
 ### 1.3​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format
 
 REQUEST: GET
+
 URL: get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv"
 
 RESPONSE

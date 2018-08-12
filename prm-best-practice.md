@@ -253,3 +253,55 @@ RESPONSE
       }
 ]
 ``` 
+
+## 4. Export​ ​Erronoeous​ ​Products
+
+Query fields options:
+
+*  marketplace​ (“String”, Required ) In case required fields not setthe API response :
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  format​ (“String”, Optional ) -> defaultis json
+
+### 4.1​ ​You​ ​want​ ​to​ ​export​ ​all​ ​errors​ ​related​ ​to​ ​your​ ​articles
+
+REQUEST: GET
+
+URL: /get_errors?marketplace=idealo.de"
+
+
+RESPONSE
+```
+{
+"AVAILABILITY": "",
+"BEST OFFERER": "",
+"BEST PRICE": null,
+"CATEGORY": "Deutsch>Haushalt Kleingeräte>Haushalt",
+"EAN": " 5KSM125PSEOB",
+"ID": "<Artikel-iD>​",
+"LAST UPDATE": "2017-10-20T21:48:15.711Z",
+"MANUFACTURER": "KitchenAid",
+"MODEL": "KitchenAid Artisan 5KSM125EOB Küchenmaschine Onyx-Schwarz",
+"MPN": "",
+"NEW PRICE": null,
+"OLD PRICE": null,
+"PRICE CHANGE": "",
+"PRODUCT NAME": "KitchenAid Artisan 5KSM125EOB Küchenmaschine Onyx-Schwarz",
+"RANKING": "",
+"SHIPPING COSTS": null,
+"SHOP": "etrona.at",
+"SHOP_URL": "http://www.etrona.at",
+>>>>> "STATUS":​ ​"ON/NO_RESULT" <<<<<
+"TOTAL PRICE": null
+14
+},
+```
+
+## NOTES
+
+The following error messages occurs in dirrentern cases:
+
+"ERROR_EAN", -> missing ean in product
+"ON/MISSING_MANDATORIES", -> missing shop or seller_url
+"ON/NO_RESULT", -> there are no competitors and productfound
+"ON/OWN_PRODUCT_NOT_FOUND", -> competitors exists buttarget product notfound
+"ON/UNKNOWN_ERROR", -> data transfer error (proxy error,timeout error, bad response from marketplace, etc .. )

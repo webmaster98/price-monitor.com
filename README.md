@@ -140,3 +140,29 @@ curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplac
 This function can be used in order to update product information such as product descriptions, EAN codes,
 minimal and maximal prices or the like.
 
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| POST          | import_products 
+
+#### Argumets :
+*  marketplace: the marketplace for which the products shall
+be imported. Please refer to the section Common Data
+Types for admissible values.
+*  separator (optional): the character separating the
+values.
+○ comma: comma (,) separated
+○ semicolon: semicolon (;) separated
+○ tab: tab (\t) separated
+*  The default separator is comma.
+*  lineend (optional): the line ending
+○ win: windows line endings (\r\n)
+○ unix: unix lineendings (\n)
+*  keepold (optional): true/false; determines whether or
+not the old product entries shall be kept or removed
+from the database. If only new products are contained in
+the data, this parameter has to be set to true. Default is
+false.
+*  test (optional): true/false; if set to true, the changes
+will not be applied to the BENY database. This
+parameter can be used for developing and testing your import application to see if the data formats are correct
+and will be accepted by BENY. Default is false.

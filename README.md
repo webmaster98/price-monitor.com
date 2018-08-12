@@ -299,3 +299,8 @@ This function can be used in order to make an export of products that have an er
 of dictionaries,
 ○ csv: the data will be provided as a CSV table
 *  The default value is json.
+
+### Return Success Value:
+
+Either a table in CSV format or a list of JSON dictionaries
+containing the exported data.

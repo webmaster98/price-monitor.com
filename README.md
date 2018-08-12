@@ -386,3 +386,35 @@ A JSON string containing the number changed and unchanged products:
 "unchanged": "<#unchanged>" 
 }
 ```
+
+
+This command updates reprice settings for existing products on a particular marketplace. Existing entries are
+updated according to your own product id. Data to be imported can be either in CSV or in a dictionary in JSON
+format. In either case, the HTTP Content-Type header must be set appropriately to text/csv or application/json,
+respectively.
+The CSV/JSON data may contain the following columns:
+1. id: the product id in your shop.
+2. min_price: the minimal price of the item in the smallest unit of the currency, e.g. cents.
+3. max_price: the maximal price of the item in the smallest unit of the currency, e.g. cents.
+4. strategy: the strategy to follow in repricing. Possible values are
+○ aggressive: always chooses the minimal reasonable price, even in cases where the
+ranking cannot be improved.
+○ gentle: always chooses the prices optimizing the profit margin
+5. underbet: the amount that a competitor’s price shall be underbid, in the smallest currency unit, e.g.
+cents
+6. round_patterns: a comma-separated list of round patterns, for instance *5,*0 for prices. Caution: If
+the CSV file itself is comma-separated, this must be escaped by a string sequence!
+7. If set to none, rounding is disabled.
+8. ranking: the desired ranking that BENY tries to achieve, e.g. 1 for the highest rank.
+9. shipping_costs: (true/false) whether or not shipping costs should be taken into account
+10.rating: (true/false) whether or not the customer ratings should be taken into account
+11. availability: (integer) the number of days a competitor needs for shipping an item until the item gets
+considered “unavailable” by BENY. If none, availability will not be taken into account at all.
+12. discounts: how discounts or additions should be treated:
+○ none: discounts and additions will not be taken into account.
+○ absolute: discounts and additions will be considered absolute numbers
+○ relative/netto: discounts and additions will be considered relatively to the net price of
+an item (i.e. without shipping costs)
+○ relative/brutto: discounts and additions will be considered relatively to the brut price
+of an item (i.e. with shipping costs included).
+13. sellerurl: the marketplace-specific URL of your shop used “http://myshop.de”

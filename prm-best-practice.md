@@ -93,7 +93,18 @@ In case of one or multiple corrupted row/s the output should be :
 {"deletetions":5240,"inserts":5239,"notes":["Invalid row 1 : Field min_price invalid"],"unchanged":0,"updates":0}
 ```
 Please note that after importthe articles settings have the default values like :
-
+```json
+{ 
+  "Strategy": "gentle",
+  "round_patterns":null , 
+  "undertbet": 0.01 ,
+  "target ranking" :1 , 
+  "shipping_costs":true,
+  "rating":true, 
+  "availability":true, 
+  "discounts": null 
+} 
+```
 To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ ​follow​ ​2.3​ ​topic​ ​!!!
 
 

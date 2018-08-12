@@ -14,7 +14,4 @@ The API is based on the paradigm of REST (Representational State Transfer) servi
 REST Service Calls to BENY
 Every call to a function of the  price monitor API is being done by GET and POST methods of the HTTP protocol. The
 general template of a URL for service calls to  price monitor looks like the following:
-<b>
-https://price-monitor.com/api/prm/login/<api-key>/<func>[?arg0=val0[&arg1=val1[&...]]]
-  </b>
-
+<b>https://price-monitor.com/api/prm/login/<api-key>/<func>[?arg0=val0[&arg1=val1[&...]]]</b>

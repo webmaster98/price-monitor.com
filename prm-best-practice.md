@@ -376,5 +376,25 @@ http://stores.ebay.de/ <Your-shop-ID>
 google shop string format like: my shop-online 
 http://www.mercateo.com/<Your-shop-ID>
 
+## 7. Set​ ​Reprice​ ​Settings
+Query fields options:
+*  marketplace​ (“String”, Required ) In case required fields not setthe API response :
+17
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  separator​ (“String”,Optional ) -> defaultis comma
+*  lineend​ ​ (“String”, Optional )
 
-
+### 7.1​ ​do​ ​you​ ​want​ ​to​ ​know​ ​the​ ​ ​available​ ​fields​ ​and​ ​errors​ ​in​ ​case​ ​wrong​ ​filed​ ​types​ ​or​ ​names​ ​:
+1. id:​ ​ ​(​ ​“String”,​ ​Required​ ​)​ ​the productid in your shop.
+In case of missing id value the error message should be:
+By error API response {"changed":0,"notes":["Invalid row 0 : Field id invalid"],"unchanged":xx}
+2. min_price​ ​(“float​ ​or​ ​integer”,​ ​Optional​ ​)​:the minimal price ofthe item in the smallest unit ofthe currency, e.g. cents.
+We try to convertinteger to float and show entries in UI as decimal
+3. max_price​ ​(“float​ ​or​ ​integer”,​ ​Optional​ ​)​:the maximal price ofthe item in the smallest unit ofthe currency, e.g. cents.
+We try to convertinteger to float and show entries in UI as decimal
+4. strategy​ ​ ​(​ ​“String​ ​(only​ ​two​ ​options​ ​available​ ​aggressive or gentle )​ ​”,​ ​Optional​ ​)​:the strategy to follow in repricing. Possible values are ○
+aggressive: always chooses the minimal reasonable price, even in cases where the ranking cannot be improved. ○ gentle: always chooses the prices optimizing the profit margin
+By error API response 
+```
+{"changed":0,"notes":["Invalid row 0 : Field strategy invalid"],"unchanged":xxx}
+```

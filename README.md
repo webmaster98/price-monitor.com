@@ -110,7 +110,7 @@ curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplac
   }
 ]
 ```
-#### with pformat_dec=2 paramenter
+##### with pformat_dec=2 paramenter
 ```
 curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplace=google.de&pformat_dec=2" -k | jq
 [

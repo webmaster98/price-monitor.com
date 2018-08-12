@@ -67,24 +67,25 @@ into a warehouse system.
 
 | HTTP request method:      |   Method       
 | ------------- |:-------------
-| GEt           | get_price_updates 
-| Argumets      | ● marketplace: the marketplace for which new price adaptations shall be
-                | queried. Please refer to the section Common Data Types for admissible
-                |values.
-                | ● format (optional): the format in which the data shall be returned.
-                |Possible values are:
-                | ○ json: the data will be provided in JSON key-value pairs,
-                | ○ csv: the data will be provided in a CSV table
-                | ● The default value is json.
-                | ● exportall={true,false}: determines whether or not a full export of all
-                |products is made or only an export of those products that BENY has a
-                |price update suggestion for. The default value is true.
-                | ● id: get an update only for the product with the specified internal
-                |product id (SKU).
-                | ● test (optional): If set to true, the call will return random prices and
-                |updates. This is only for early integration and testing purposes.
-                | ● pformat_dec (optional): price format , 1=interger, 2=float default is 1      
+| GET           | get_price_updates 
+| Argumets      | 
 
+● marketplace: the marketplace for which new price adaptations shall be
+queried. Please refer to the section Common Data Types for admissible
+values.
+● format (optional): the format in which the data shall be returned.
+Possible values are:
+○ json: the data will be provided in JSON key-value pairs,
+○ csv: the data will be provided in a CSV table
+● The default value is json.
+● exportall={true,false}: determines whether or not a full export of all
+products is made or only an export of those products that BENY has a
+price update suggestion for. The default value is true.
+● id: get an update only for the product with the specified internal
+product id (SKU).
+● test (optional): If set to true, the call will return random prices and
+updates. This is only for early integration and testing purposes.
+● pformat_dec (optional): price format , 1=interger, 2=float default is 1
 
 
 

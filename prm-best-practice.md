@@ -1,4 +1,4 @@
-## Intro best practice 
+## Price-monitor best practice 
 
 api API HTTP request need to use the url https://price-monitor.com/api/prm/login/​<API-KEY>/
 
@@ -305,3 +305,24 @@ The following error messages occurs in dirrentern cases:
 *  "ON/NO_RESULT", -> there are no competitors and productfound
 *  "ON/OWN_PRODUCT_NOT_FOUND", -> competitors exists buttarget product notfound
 *  "ON/UNKNOWN_ERROR", -> data transfer error (proxy error,timeout error, bad response from marketplace, etc .. )
+
+
+
+## 5. Deletion​ ​of​ ​Products
+
+Query fields options:
+*  marketplace​ (“String”,Required ) In case required fields not setthe API response :
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  ids​ (“String”, Required ) -> param ids could contain multiple products ids separated by comma
+
+### 5.1​ ​You​ ​want​ ​to​ ​delete​ ​a​ ​single​ ​article​ ​related​ ​to​ ​a​ ​marketplace
+
+REQUEST: GET
+
+URL: delete_products?marketplace=idealo.de&ids=<Artikel-iD>
+
+RESPONSE
+```
+{"deleted":1}
+```
+

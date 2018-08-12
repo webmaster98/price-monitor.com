@@ -77,7 +77,23 @@ Id,ean,id_on_marketplace,category,mpn,manufacturer,model,name_on_marketplace,min
 <Artikel-iD>,7611382551122,,Armbanduhr,XS.3059,Luminox,<NAME_ON_MPlace>,15120, 69800
 etc ….
 ```
+REQUEST: POST
 
+URl: import_products?marketplace=idealo.de&separator=comma&keepold=false&lineend=unix" --data-binary @article-list.csv​ -H 'Content-type: text/csv'
+
+RESPONSE:
+```json
+{"deletetions":33,"inserts":5240,"notes":[],"unchanged":0,"updates":0}
+```
+
+#### NOTES
+
+In case of one or multiple corrupted row/s the output should be :
+{"deletetions":5240,"inserts":5239,"notes":["Invalid row 1 : Field min_price invalid"],"unchanged":0,"updates":0}
+Please note that after importthe articles settings have the default values like :
+Strategy: gentle, round_patterns: : none , undertbet: 0.01 ,target ranking :1 , shipping_costs:true, rating:true, availability:true, discounts:
+none
+To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ ​follow​ ​2.3​ ​topic​ ​!!!
 
 
 

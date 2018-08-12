@@ -34,3 +34,22 @@ in the UTF-8 string encoding.
 
 ## Security and Encryption
 All transactions are SSL encrypted.
+
+## Common Data Types
+
+Marketplaces
+Some of the API functions need to be parametrized by the marketplace they are supposed to operate on. In most
+cases, this can be specified by a HTTP query argument called marketplace. Admissible values are:
+
+1. google.de
+2. amazon.de
+3. ebay.de
+4. idealo.de
+5. ladenzeile.de
+6. rakuten.de
+7. toppreise.de
+8. mercateo.de
+9. billiger.de
+10. geizhals.de
+11. B2B Marketplaces
+

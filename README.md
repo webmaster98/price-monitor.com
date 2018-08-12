@@ -202,13 +202,13 @@ this item
 ```json 
 { 
   "Strategy": "gentle",
-  "round_patterns":none , 
+  "round_patterns":null , 
   "undertbet": 0.01 ,
   "target ranking" :1 , 
   "shipping_costs":true,
   "rating":true, 
   "availability":true, 
-  "discounts": none 
+  "discounts": null 
 } 
 ```
 To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ set reprice option to off ( marketplace_settings?marketplace=<MARKETPLACE>&repricing=off ) !!!

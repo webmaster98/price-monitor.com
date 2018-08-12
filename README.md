@@ -127,3 +127,7 @@ curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplac
 ]
 ```
 
+### return error code
+```json
+{"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+```

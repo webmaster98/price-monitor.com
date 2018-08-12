@@ -8,6 +8,7 @@ exemplary code snippets for how to use it. The API definition is in subject to f
 reports, change or feature requests, please refer to https://price-monitor.freshdesk.com/support/tickets/new
 or for any samle code issue at https://github.com/webmaster98/price-monitor.com/issues
 
+For more sample please check best practice at https://github.com/webmaster98/price-monitor.com/blob/master/prm-best-practice.md
 
 ## General Information
 The API is based on the paradigm of REST (Representational State Transfer) service models

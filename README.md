@@ -11,7 +11,7 @@ or for any samle code issue at https://github.com/webmaster98/price-monitor.com/
 
 ## General Information
 The API is based on the paradigm of REST (Representational State Transfer) service models
-REST Service Calls to BENY
+REST Service Calls to price monitor
 Every call to a function of the  price monitor API is being done by GET and POST methods of the HTTP protocol. The
 general template of a URL for service calls to  price monitor looks like the following:
 
@@ -79,7 +79,7 @@ Possible values are:
 ○ csv: the data will be provided in a CSV table
 * The default value is json.
 * exportall={true,false}: determines whether or not a full export of all
-products is made or only an export of those products that BENY has a
+products is made or only an export of those products that price monitor has a
 price update suggestion for. The default value is true.
 * id: get an update only for the product with the specified internal
 product id (SKU).

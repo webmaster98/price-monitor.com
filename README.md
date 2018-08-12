@@ -350,4 +350,9 @@ on the respective marketplace.
 ### Return Success Value:
 A JSON string confirming the settings: {'url':<url>, 'repricing': <on/off>, 'ean':<on/off>}
 
-
+Note: In case of Amazon, eBay, google or Mercateo.com, the Shop-description must have the following form:
+http://www.amazon.de/shops/<YOUR-AMAZON-ID>
+http://stores.ebay.de/<YOUR-EBAY-ID>
+My shop as a string at google < like test shop >
+http://www.mercateo.com/<YOUR-MERCATEO-ID>
+For all other marketplaces, the domain of your shop is sufficient.

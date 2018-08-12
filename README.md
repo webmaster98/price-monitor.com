@@ -380,7 +380,7 @@ Please refer to the section Common Data Types for admissible values.
 ### Return Success Value:
 
 A JSON string containing the number changed and unchanged products:
-`json
+```json
 {
 "changed": "<#changed>", 
 "unchanged": "<#unchanged>" 

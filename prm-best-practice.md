@@ -16,9 +16,13 @@ Query fields options:
 REQUEST
 GET
 get_price_updates?marketplace=idealo.de&id=<Artikel-ID>"
+
 RESPONSE
+```json
 [{"id":"<Artikel-ID>","new_price":55884​,"old_price":55885​}]
+```
 ### 1.2​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format
+
 REQUEST
 GET
 get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2"
@@ -27,6 +31,7 @@ RESPONSE
 [{"id":"<Artikel-ID>","new_price":558.84​,"old_price":558.85​}]
 ```
 ### 1.3​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format
+
 REQUEST
 GET
 get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv"

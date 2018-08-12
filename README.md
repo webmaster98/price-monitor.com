@@ -1,4 +1,4 @@
-# price-monitor.com
+# price-monitor.com RESTfull API
 
 Welcome to price monitor the Reprice Robot’s API
 Specification!
@@ -215,4 +215,18 @@ this item
 } 
 ```
 To​ ​avoid​ ​to​ ​initial​ ​articles​ imediatly ​with​ ​default​ ​values​ ​please​ set reprice option to off ( marketplace_settings?marketplace=<MARKETPLACE>&repricing=off ) !!!
+  
+  
+### Export of Product Offers
+This function can be used in order to make a full export of product offers available in price monitor.
+
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| GET           | export 
+  
+  
+  
+  
+  
 

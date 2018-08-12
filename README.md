@@ -135,3 +135,8 @@ curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplac
 
 ---
 
+### Import and Update of Products
+
+This function can be used in order to update product information such as product descriptions, EAN codes,
+minimal and maximal prices or the like.
+

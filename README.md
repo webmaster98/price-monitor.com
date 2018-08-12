@@ -100,13 +100,26 @@ curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplac
 [
   {
     "id": "325572",
-    "new_price": "",
-    "old_price": ""
+    "new_price": "55884",
+    "old_price": "52884"
   },
   {
     "id": "325575",
-    "new_price": "",
-    "old_price": ""
+    "new_price": "51821",
+    "old_price": "53385"
+  }
+]
+curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplace=google.de&pformat_dec=2" -k | jq
+[
+  {
+    "id": "325572",
+    "new_price": "558.84",
+    "old_price": "528.84"
+  },
+  {
+    "id": "325575",
+    "new_price": "518.21",
+    "old_price": "533.85"
   }
 ]
 ```

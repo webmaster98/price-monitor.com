@@ -108,9 +108,21 @@ Please note that after importthe articles settings have the default values like 
 To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ ​follow​ ​2.3​ ​topic​ ​!!!
 
 
+2.2​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​with​ ​comma​ ​separated​ ​)​ ​ ​and​ ​not​ ​override​ ​old​ ​entries​ ​only​ ​update
 
+REQUEST: POST
+URL: import_products?marketplace=idealo.de&separator=comma&keepold=true&lineend=unix" --data-binary @article-list.csv​ Content-type:text/csv'
 
+RESPONSE
+```json
+{"deletetions":0,"inserts":0,"notes":[],"unchanged":0,"updates":5240}
+```
 
+### NOTES
+In case of one or multiple corrupted row/s the output should be :
+```json
+{"deletetions":0,"inserts":1,"notes":["Invalid row 3 : Field ean invalid"],"unchanged":1,"updates":5239}
+```
 
 
 

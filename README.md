@@ -172,8 +172,10 @@ and will be accepted by  price monitor. Default is false.
 A JSON dictionary containing the number of inserts, updates and
 deletions that have been performed:
 ```json
-{ 'inserts': "<#inserts>",
-'updates': "<#updates>",
-'deletions': "<#deletions>",
-'unchanged': "<#unchanged>"}
+{ 
+  "inserts": "<#inserts>",
+  'updates": "<#updates>",
+  "deletions": "<#deletions>",
+  "unchanged": "<#unchanged>"
+ }
 ```

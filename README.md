@@ -53,3 +53,7 @@ cases, this can be specified by a HTTP query argument called marketplace. Admiss
 10. geizhals.de
 11. B2B Marketplaces
 
+Whenever there are prices in some of the variables in any request, they are to be specified as integer numbers in
+the smallest unit of the respective currency. ***Example: A price of EUR 100.99 needs to be specified by the integer
+10099.***
+

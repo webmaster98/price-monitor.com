@@ -320,3 +320,34 @@ Data Types for admissible values.
 *  ids: A (possibly comma-separated list of) product IDs
 whose data is to be deleted.
 
+
+## Set Marketplace Settings
+This method is used to set or initialize the settings specific to a marketplace. Before a call import_products can be
+made, this method must be called once to initialize a marketplace.
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| GET           | marketplace_settings
+
+#### Argumets :
+
+*  marketplace: the marketplace from which the products shall be exported
+Please refer to the section Common Data Types for admissible values.
+*  repricing={on,off}: whether the repricing functionality of BENY shall
+be switched on of off. If you only want to observe the marketplace
+without identification and repricing of own products, set this to off.
+Default is on.
+*  url: the marketplace-specific URL of your shop used for identification.
+On Amazon and ebay, for example, this should be set to your shop URL
+on the respective marketplace.
+*  ean: whether or not to use the EAN for importing new products
+
+
+On Amazon and ebay, for example, this should be set to your shop URL
+on the respective marketplace.
+● ean: whether or not to use the EAN for importing new products
+Return
+Value:
+A JSON string confirming the settings: {'url':<url>, '
+
+

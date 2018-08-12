@@ -57,3 +57,16 @@ Whenever there are prices in some of the variables in any request, they are to b
 the smallest unit of the respective currency. ***Example: A price of EUR 100.99 needs to be specified by the integer
 10099.***
 
+
+Function Specification of the API
+
+### Get Price Updates for Products
+
+This function can be used in order to retrieve price recommendations by price monitor , which in turn can be imported
+into a warehouse system.
+
+
+
+
+
+

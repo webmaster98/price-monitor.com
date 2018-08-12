@@ -199,13 +199,17 @@ this item
 10. max_price: the maximal price of the item that will never be oversold. The CSV data needs to be transferred in the body of the HTTP POST method.
 
 #### Please note that after import the articles settings have the default values like :
-Strategy: gentle,
-round_patterns:none , 
-undertbet: 0.01 ,
-target ranking :1 , 
-shipping_costs:true,
-rating:true, 
-availability:true, 
-discounts: none 
+```json 
+{ 
+  "Strategy": "gentle",
+  "round_patterns":none , 
+  "undertbet": 0.01 ,
+  "target ranking" :1 , 
+  "shipping_costs":true,
+  "rating":true, 
+  "availability":true, 
+  "discounts": none 
+} 
+```
 To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ set reprice option to off ( marketplace_settings?marketplace=<MARKETPLACE>&repricing=off ) !!!
 

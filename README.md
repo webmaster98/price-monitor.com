@@ -280,3 +280,22 @@ available and will be shipped without delay. -1 means unvailable. -9999 means un
 *  BEST OFFERER: the name of the shop with the best offer
 *  BEST PRICE: the price of the best offer
 
+
+
+### Export Erronoeous Products
+This function can be used in order to make an export of products that have an error status:
+
+
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| GET           | get_errors
+
+
+
+*  marketplace: the marketplace from which the products shall be exported Please refer to the section Common Data Types for admissible values.
+*  format (optional): the format in which the data shall be returned. Possible values are:
+○ json: the data will be provided in a JSON list
+of dictionaries,
+○ csv: the data will be provided as a CSV table
+*  The default value is json.

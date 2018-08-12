@@ -68,8 +68,8 @@ into a warehouse system.
 | HTTP request method:      |   Method       
 | ------------- |:-------------
 | GET           | get_price_updates 
-| Argumets      | 
 
+#### Argumets 
 ● marketplace: the marketplace for which new price adaptations shall be
 queried. Please refer to the section Common Data Types for admissible
 values.
@@ -86,6 +86,10 @@ product id (SKU).
 ● test (optional): If set to true, the call will return random prices and
 updates. This is only for early integration and testing purposes.
 ● pformat_dec (optional): price format , 1=interger, 2=float default is 1
+
+
+
+
 
 
 

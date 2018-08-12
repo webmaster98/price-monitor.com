@@ -166,6 +166,7 @@ false.
 will not be applied to the  price monitor database. This
 parameter can be used for developing and testing your import application to see if the data formats are correct
 and will be accepted by  price monitor. Default is false.
+*  cleanold (true|false) function delete products in database that not includes in csv
 
 ### Return Success Value:
 

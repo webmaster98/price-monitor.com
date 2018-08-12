@@ -56,3 +56,47 @@ id,new_price,old_price
 <Artikel-ID>,436.77,403.95
 <Artikel-ID>,298.98,298.98
 ```
+
+
+2. Import​ ​and​ ​Update​ ​of​ ​Products
+Query fields options:
+*  marketplace​ ( “String”,Required ) In case required fields not setthe API response :
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  separator​ ( “String”, Optional ) -> defaultis comma
+*  lineend​ ( “String”,Optional )
+5
+*  keepold​ (“boolean”, Optional ) -> defaultis true
+*  test​ ​ (“boolean”, Optional ) -> defaultis false
+
+
+2.1​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​with​ ​comma​ ​separated​ ​)​ ​override​ ​old​ ​entries​ ​and​ ​start​ ​initialisation
+The example of article-list.csv​ list:
+```csv
+Id,ean,id_on_marketplace,category,mpn,manufacturer,model,name_on_marketplace,min_price,max_price
+<Artikel-iD>,7611382551115,,Armbanduhr,XS.3051,Luminox,<NAME_ON_MPlace>,16710, 69800
+<Artikel-iD>,7611382551122,,Armbanduhr,XS.3059,Luminox,<NAME_ON_MPlace>,15120, 69800
+etc ….
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

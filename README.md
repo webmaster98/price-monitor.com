@@ -69,7 +69,7 @@ into a warehouse system.
 | ------------- |:-------------
 | GET           | get_price_updates 
 
-#### Argumets 
+#### Argumets :
 * marketplace: the marketplace for which new price adaptations shall be
 queried. Please refer to the section Common Data Types for admissible
 values.
@@ -87,8 +87,13 @@ product id (SKU).
 updates. This is only for early integration and testing purposes.
 * pformat_dec (optional): price format , 1=interger, 2=float default is 1
 
+### Return Value:
 
-
+The new prices of items for the given marketplace. Only items for which a new
+price could be calculated are returned. JSON format: key-value pairs of the form:
+[{'id': '<item_id>','new_price': <newPrice>}]
+CSV format: Column-separated by semicolons (;). The column names are id (the ite
+new price update) and old_price (the old current price)
 
 
 

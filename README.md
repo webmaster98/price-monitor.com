@@ -254,4 +254,29 @@ products will be exported.
 *  pformat_dec (optional): price format , 1=interger, 2=float default is 1
   
   
+### Return Success Value:
+Either a table in CSV format or a list of JSON dictionaries containing the
+exported data.
+
+The export data comprises the following attributes (depending on the value of the format parameter, either
+column in the CSV data or JSON dictionary keys):
+*  ID: the internal product ID.
+*  PRODUCT NAME: the name of the product.
+*  CATEGORY: the category of the product, if any.
+*  MANUFACTURER: the manufacturer of the product.
+*  MODEL: the model of the product
+*  EAN: the EAN code of the product
+*  MPN: the Manufacturer Part Number of the product, if any.
+*  STATUS: the current status of the product in BENY
+*  RANKING: the ranking of the offer on the respective marketplace.
+*  SHIPPING COSTS: the shipping costs of the offer.
+*  SHOP: the name of the competitor (or the name of the own shop)
+*  NEW PRICE: the price update suggestion by BENY.
+*  OLD PRICE: the the current price listed on the marketplace.
+*  PRICE CHANGE: the difference between old price and new price (absolute and relative)
+*  LAST UPDATE: the timestamp of the most recent update
+*  AVAILABILITY: the time until the item will be shipped as a time interval. 00-00means the item is
+available and will be shipped without delay. -1 means unvailable. -9999 means unknown availability.
+*  BEST OFFERER: the name of the shop with the best offer
+*  BEST PRICE: the price of the best offer
 

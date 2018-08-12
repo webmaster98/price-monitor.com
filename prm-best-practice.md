@@ -300,8 +300,8 @@ RESPONSE
 
 The following error messages occurs in dirrentern cases:
 
-"ERROR_EAN", -> missing ean in product
-"ON/MISSING_MANDATORIES", -> missing shop or seller_url
-"ON/NO_RESULT", -> there are no competitors and productfound
-"ON/OWN_PRODUCT_NOT_FOUND", -> competitors exists buttarget product notfound
-"ON/UNKNOWN_ERROR", -> data transfer error (proxy error,timeout error, bad response from marketplace, etc .. )
+*  "ERROR_EAN", -> missing ean in product
+*  "ON/MISSING_MANDATORIES", -> missing shop or seller_url
+*  "ON/NO_RESULT", -> there are no competitors and productfound
+*  "ON/OWN_PRODUCT_NOT_FOUND", -> competitors exists buttarget product notfound
+*  "ON/UNKNOWN_ERROR", -> data transfer error (proxy error,timeout error, bad response from marketplace, etc .. )

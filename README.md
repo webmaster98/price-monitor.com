@@ -356,3 +356,33 @@ http://stores.ebay.de/<YOUR-EBAY-ID>
 My shop as a string at google < like test shop >
 http://www.mercateo.com/<YOUR-MERCATEO-ID>
 For all other marketplaces, the domain of your shop is sufficient.
+
+## Set Reprice Settings
+This function can be used in order to update settings for the repricing strategies, such as minimal and maximal
+prices or the desired ranking.
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| POST           | reprice_settings
+
+#### Argumets :
+*  marketplace: the marketplace from which the products shall be exported
+Please refer to the section Common Data Types for admissible values.
+*  separator (optional): the character separating the values.
+○ comma: comma (,) separated
+○ semicolon: semicolon (;) separated
+○ tab: tab (\t) separated
+*  The default separator is comma.
+*  lineend (optional): the line ending
+○ win: windows line endings (\r\n)
+○ unix: unix lineendings (\n)
+
+### Return Success Value:
+
+A JSON string containing the number changed and unchanged products:
+`json
+{
+"changed": "<#changed>", 
+"unchanged": "<#unchanged>" 
+}
+```

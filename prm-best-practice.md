@@ -12,19 +12,19 @@ Query fields options:
 *  format​ ( “String”, Optional ) ->defaultis json
 *  exportall​ (“boolean”, Optional )
 
-### 1.1​ ​You​ ​want​ ​to​ ​get​ ​the​ ​Beny​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product
+### 1.1​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product
 REQUEST
 GET
 get_price_updates?marketplace=idealo.de&id=<Artikel-ID>"
 RESPONSE
 [{"id":"<Artikel-ID>","new_price":55884​,"old_price":55885​}]
-### 1.2​ ​You​ ​want​ ​to​ ​get​ ​the​ ​Beny​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format
+### 1.2​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format
 REQUEST
 GET
 get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2"
 RESPONSE
 [{"id":"<Artikel-ID>","new_price":558.84​,"old_price":558.85​}]
-### 1.3​ ​You​ ​want​ ​to​ ​get​ ​the​ ​Beny​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format
+### 1.3​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format
 REQUEST
 GET
 get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv"
@@ -32,7 +32,7 @@ get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv
 RESPONSE
 Id,new_price,old_price
 <Artikel-ID>,558.84,558.85
-### 1.4​ ​You​ ​want​ ​to​ ​get​ ​the​ ​Beny​ ​price​ ​suggestion​ ​from​ ​all​ ​products​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format​ ​only​ ​if​ ​Beny
+### 1.4​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​all​ ​products​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format​ ​only​ ​if​ ​price monitor
 calculate​ ​the​ ​price​ ​suggestion
 REQUEST
 GET

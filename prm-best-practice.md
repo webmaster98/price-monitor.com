@@ -485,3 +485,27 @@ RESPONSE
 id,min_price,max_price,strategy,underbet,round_patterns,ranking,shipping_costs,rating,availability,discounts
 <ARTICLE-ID>,22.72,34.19,gentle,0.01,05,1,true,true,7,none
 ```
+
+## 9. Get​ ​License​ ​Information
+
+This method can be used to retrieve general information aboutthe BENY license and booked marketplaces.
+
+REQUEST: GET
+
+URL: ?license
+
+RESPONSE
+```
+[
+    {
+    "customer_id": "xxx",
+    "end_date": "2021-07-23",
+    "license": "Ultimate",
+    "marketplaces": [
+    "IdealoDE"
+    ],
+    "max_products": "7500",
+    "start_date": "2017-07-23"
+    }
+]
+```

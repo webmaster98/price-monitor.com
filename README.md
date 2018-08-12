@@ -428,10 +428,10 @@ id;min_price;max_price;strategy
 ```json
 ### Example (JSON)
 [
-  {“id”: ”00-11-22-33”,
-  “min_price”: 1199, 
-  ”max_price”: 1999, 
-  “strategy”: “aggressive”
+  {"id": "00-11-22-33",
+  "min_price": 1199, 
+  "max_price": 1999, 
+  "strategy": "aggressive"
   }
 ]
 ```

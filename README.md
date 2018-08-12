@@ -65,7 +65,10 @@ Function Specification of the API
 This function can be used in order to retrieve price recommendations by price monitor , which in turn can be imported
 into a warehouse system.
 
-
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
 
 
 

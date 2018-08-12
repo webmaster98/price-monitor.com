@@ -325,4 +325,13 @@ RESPONSE
 ```
 {"deleted":1}
 ```
+## 5.2​ ​You​ ​want​ ​to​ ​delete​ ​a​ ​multiple​ ​articles​ ​related​ ​to​ ​a​ ​marketplace
 
+REQUEST: GET
+
+URL: delete_products?marketplace=idealo.de&ids=<Artikel-iD1>,<Artikel-iD2>
+
+RESPONSE
+```
+{"deleted":2}
+```

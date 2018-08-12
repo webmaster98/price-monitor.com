@@ -13,9 +13,9 @@ Query fields options:
 *  exportall​ (“boolean”, Optional )
 
 ### 1.1​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product
-REQUEST
-GET
-get_price_updates?marketplace=idealo.de&id=<Artikel-ID>"
+REQUEST: GET
+
+URL: get_price_updates?marketplace=idealo.de&id=<Artikel-ID>"
 
 RESPONSE
 ```json

@@ -53,6 +53,8 @@ cases, this can be specified by a HTTP query argument called marketplace. Admiss
 10. geizhals.de
 11. B2B Marketplaces
 
+if you need to monitor prices in additional marketplaces like [MAdditional marketplace links](https://github.com/webmaster98/price-monitor.com/blob/master/M-list.txt) or at an additional one please send us a email at webmaster@price-monitor.com !!
+
 Whenever there are prices in some of the variables in any request, they are to be specified as integer numbers in
 the smallest unit of the respective currency. ***Example: A price of EUR 100.99 needs to be specified by the integer
 10099.***

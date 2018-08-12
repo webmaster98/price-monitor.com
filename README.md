@@ -207,5 +207,5 @@ shipping_costs:true,
 rating:true, 
 availability:true, 
 discounts: none 
-To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ ​follow​ ​2.3​ ​topic​ ​!!!
+To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ set reprice option to off ( marketplace_settings?marketplace=<MARKETPLACE>&repricing=off ) !!!
 

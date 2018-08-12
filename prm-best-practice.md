@@ -23,19 +23,19 @@ RESPONSE
 ```
 ### 1.2​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format
 
-REQUEST
-GET
-get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2"
+REQUEST: GET
+
+URL: get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2"
+
 RESPONSE
 ```json
 [{"id":"<Artikel-ID>","new_price":558.84​,"old_price":558.85​}]
 ```
 ### 1.3​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​a​ ​ ​dedicated​ ​product​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format
 
-REQUEST
-GET
-get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv"
-4
+REQUEST: GET
+URL: get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv"
+
 RESPONSE
 ```csv
 Id,new_price,old_price
@@ -43,9 +43,9 @@ Id,new_price,old_price
 ```
 ### 1.4​ ​You​ ​want​ ​to​ ​get​ ​the​ ​price monitor​ ​price​ ​suggestion​ ​from​ ​all​ ​products​ ​in​ ​decimal​ ​format​ ​and​ ​as​ ​CSV​ ​output​ ​format​ ​only​ ​if​ ​price monitor
 calculate​ ​the​ ​price​ ​suggestion
-REQUEST
-GET
-get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv&exportall=false"
+REQUEST: GET
+
+URL: get_price_updates?marketplace=idealo.de&id=<Artikel-ID>&pformat_dec=2&format=csv&exportall=false"
 
 RESPONSE
 ```csv

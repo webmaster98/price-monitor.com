@@ -346,8 +346,8 @@ on the respective marketplace.
 On Amazon and ebay, for example, this should be set to your shop URL
 on the respective marketplace.
 ● ean: whether or not to use the EAN for importing new products
-Return
-Value:
-A JSON string confirming the settings: {'url':<url>, '
+
+### Return Success Value:
+A JSON string confirming the settings: {'url':<url>, 'repricing': <on/off>, 'ean':<on/off>}
 
 

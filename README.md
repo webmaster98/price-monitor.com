@@ -225,8 +225,33 @@ This function can be used in order to make a full export of product offers avail
 | ------------- |:-------------
 | GET           | export 
   
-  
-  
+
+#### Argumets :
+*  marketplace: the marketplace from which the products shall be
+exported Please refer to the section Common Data Types for
+admissible values.
+*  format (optional): the format in which the data shall be returned.
+Possible values are:
+○ json: the data will be provided in a JSON list of
+dictionaries,
+○ csv: the data will be provided as a CSV table
+*  The default value is json.
+*  exportall (optional): {true,false}: If set to true, a list of offers
+including all competitors will be made. The default value is true.
+*  sortby (optional): a column name by which the offers are to be
+sorted. Possible values are
+○ total_price: the brut price of an offer.
+○ price: the net price of an offer
+○ shipping_costs: the shipping of an offer
+○ ranking: the ranking on the marketplace.
+*  The default value is ranking
+*  offeridx (optional): return only the offers with the given index after
+sorting them. If no offeridx is given, it will return all offers.
+(default).
+*  ids (optional): A (possibly comma- separated list of) product IDs
+whose data is to be exported. If this parameter is not specified, all
+products will be exported.
+*  pformat_dec (optional): price format , 1=interger, 2=float default is 1
   
   
 

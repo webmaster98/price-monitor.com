@@ -108,7 +108,7 @@ Please note that after importthe articles settings have the default values like 
 To​ ​avoid​ ​to​ ​initial​ ​articles​ ​with​ ​default​ ​values​ ​please​ ​follow​ ​2.3​ ​topic​ ​!!!
 
 
-2.2​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​with​ ​comma​ ​separated​ ​)​ ​ ​and​ ​not​ ​override​ ​old​ ​entries​ ​only​ ​update
+### 2.2​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​with​ ​comma​ ​separated​ ​)​ ​ ​and​ ​not​ ​override​ ​old​ ​entries​ ​only​ ​update
 
 REQUEST: POST
 URL: import_products?marketplace=idealo.de&separator=comma&keepold=true&lineend=unix" --data-binary @article-list.csv​ Content-type:text/csv'
@@ -124,7 +124,7 @@ In case of one or multiple corrupted row/s the output should be :
 {"deletetions":0,"inserts":1,"notes":["Invalid row 3 : Field ean invalid"],"unchanged":1,"updates":5239}
 ```
 
-2.3​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​set​ ​individual​ ​ ​repricing​ ​and​ ​after​ ​initial​ ​all​ ​items
+### 2.3​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​set​ ​individual​ ​ ​repricing​ ​and​ ​after​ ​initial​ ​all​ ​items
 
 REQUEST 
 
@@ -135,7 +135,7 @@ REQUEST
 4. Turn​ ​repricing​ ​on​ ( see topic 6 ) = marketplace_settings?marketplace=idealo.de&repricing=off
 
 
-3. Export​ ​of​ ​Product​ ​Offers
+### 3. Export​ ​of​ ​Product​ ​Offers
 Query fields options:
 *  marketplace​ ( Required ) In case required fields not setthe API response :
 ○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
@@ -147,7 +147,7 @@ Query fields options:
 *  pformat_dec​ ​ ​ (“integer”, Optional ) -> defaultis decimal
 *  exportall​ ​ (“boolean”, Optional ) -> defaultis false
 
-3.1​ ​You​ ​want​ ​to​ ​export​ ​a​ ​dedicated​ ​article
+### 3.1​ ​You​ ​want​ ​to​ ​export​ ​a​ ​dedicated​ ​article
 
 REQUEST: GET
 
@@ -185,7 +185,7 @@ RESPONSE
 ### NOTES
 Price formatis integer as default
 
-3.2​ ​You​ ​want​ ​to​ ​export​ ​all​ ​articles​ ​in​ ​decimal​ ​format
+### 3.2​ ​You​ ​want​ ​to​ ​export​ ​all​ ​articles​ ​in​ ​decimal​ ​format
 
 REQUEST: GET
 
@@ -219,4 +219,36 @@ RESPONSE
 ]
 ```
 
+### 3.3​ ​You​ ​want​ ​to​ ​export​ ​ ​a​ ​offer​ ​from​ ​competitor​ ​with​ ​ranking​ ​3
 
+REQUEST : GET
+
+URL: /export?marketplace=idealo.de&exportall=false&offeridx=3&ids=<Artikel-iD>
+
+
+RESPONSE
+
+[
+{
+      "AVAILABILITY": "00-00",
+      "BEST OFFERER": "crowdfox.com",           ->BEST​ ​OFFERER​ ​NAME
+      "BEST PRICE": 133869,                     ->BEST​ ​TOTAL​ ​ ​PRICE​ ​OF​ ​COMPETITOR
+      "CATEGORY": "Deutsch>Waschen & Trocknen>Waschmaschinen>Frontlader",
+      "EAN": "7332543382378",
+      "ID": "<Artikel-iD>​",
+      "LAST UPDATE": "2017-10-20T21:45:08.684Z",
+      "MANUFACTURER": "Electrolux Professional",
+      "MODEL": "Electrolux MyPro WE170P Gewerbliche Waschvollautomat",
+      "MPN": "",
+      "NEW PRICE": 13386800,                    ->​ ​OWN​ ​ARTICLE​ ​PRICE​ ​SUGGESTION
+      "OLD PRICE": 133869,                      ->​ ​COMPETITOR​ ​PRICE
+      "PRICE CHANGE": "0.17 (0.01%)",           ->​ ​OWN​ ​PRICE​ ​CHANGES
+      "PRODUCT NAME": "MyPro WE 170 P",         ->​ ​COMPETITOR​ ​NAME
+      "RANKING": 3,                             ->​ ​COMPETITOR​ ​RANKING
+      "SHIPPING COSTS": 0,                      ->​ ​COMPETITOR​ ​SHIPPING​ ​COSTS
+      "SHOP": "mediadeal.de",                    ->​ ​ ​COMPETITOR​ ​NAME
+      "SHOP_URL": "mediadeal.de",                ->​ ​ ​COMPETITOR​ ​URL
+      "STATUS": "ON/OK",                         ->​ ​ ​OWN​ ​ARTICLE​ ​STATUS
+      "TOTAL PRICE": 133869 -                     >​ ​ ​COMPETITOR​ ​TOTAl​ ​PRICE
+      }
+]

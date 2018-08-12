@@ -124,7 +124,15 @@ In case of one or multiple corrupted row/s the output should be :
 {"deletetions":0,"inserts":1,"notes":["Invalid row 3 : Field ean invalid"],"unchanged":1,"updates":5239}
 ```
 
+2.3​ ​You​ ​want​ ​to​ ​import​ ​5240​ ​articles​ ​as​ ​csv​ ​format​ ​ ​set​ ​individual​ ​ ​repricing​ ​and​ ​after​ ​initial​ ​all​ ​items
 
+REQUEST 
+
+1. Turn​ ​repricing​ ​off​ ( see topic 6 ) = marketplace_settings?marketplace=idealo.de&repricing=off
+2. Import​ ​articles​ ( see topic 3 ) = import_products?marketplace=idealo.de&separator=comma&keepold=true&lineend=unix"
+--data-binary @article-list.csv Content-type:text/csv'
+3. Make​ ​settings​ ( see topic 7 ) = reprice_settings?marketplace=idealo.de&lineend=unix" --data-binary @data.csv -H 'Content-type: text/csv' -X POST
+4. Turn​ ​repricing​ ​on​ ( see topic 6 ) = marketplace_settings?marketplace=idealo.de&repricing=off
 
 
 

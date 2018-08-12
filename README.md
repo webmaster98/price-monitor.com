@@ -418,3 +418,24 @@ an item (i.e. without shipping costs)
 ○ relative/brutto: discounts and additions will be considered relatively to the brut price
 of an item (i.e. with shipping costs included).
 13. sellerurl: the marketplace-specific URL of your shop used “http://myshop.de”
+
+### Example (CSV)
+```csv
+id;min_price;max_price;strategy
+00-11-22-33;1199;1999;aggressive
+00-11-22-34;;aggressive
+```
+```json
+### Example (JSON)
+[
+  {“id”: ”00-11-22-33”,
+  “min_price”: 1199, 
+  ”max_price”: 1999, 
+  “strategy”: “aggressive”
+  }
+]
+```
+
+The two examples are equivalent. They will set the repricing strategy for the two items with IDs 00-11-22-33 and
+00-11-22-34 to “aggressive” mode, set the minimal price of the former product to 11.99, the maximal price to
+19.99, and leaves the min and max prices of the latter item unchanged.

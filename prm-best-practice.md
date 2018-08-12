@@ -398,3 +398,90 @@ By error API response
 ```
 {"changed":0,"notes":["Invalid row 0 : Field strategy invalid"],"unchanged":xxx}
 ```
+5. underbet​ ​ ​(“float”,​ ​Optional​ ​)​:the amountthat a competitor’s price shall be underbid, in the smallest currency unit, e.g. cents
+By error API response {"changed":0,"notes":["Invalid row 0 : Field underbetinvalid"],"unchanged":xxx}
+The solution in this case is to change underbettype to floadtin your csv row
+6. round_patterns​ ​ ​(“String”,​ ​Optional​ ​)​:
+With BENY, you have the possibility to round off the new price propositions according to certain rules, which you can get. With this rule, it
+is possible, for example, to instruct BENY to round off price proposals always on "smooth" amounts (price with extensively zeros behind
+the comma).
+A rule always consists of a pattern of 2 characters, at least one of which must be a number (0-9) and can be a ~ wildcard ~ (*) up to one
+character. Such a pattern determines which amounts are left behind the comma of a price forecast. Price proposals are then rounded so
+that the numbers in the pattern match exactly with the numbers in the price proposal, whereby the wildcard / character allows an arbitrary
+number. You can specify a number of times, always with the highest price, which one of the regulars will allow, however, your minimum
+price and your sub-amount.
+Examples:
+a. The pattern * 0 allows only ~ smooth ~ cent amounts, ie 00, 10, 20, 30, 40, 50, ... 90 behind the comma of a price proposal.
+b. The two patterns * 0 and * 5 allow 0 rounded to 0 and 5, ie 00, 05, 10, 15, 20, 25, 30, 35, .... 95 behind the comma.
+c. The two patterns 0 0 and 5 0 allow 'smooth' Euro and ~ rounded to 50 cents, ie 00 and 50 behind the comma.
+d. The pattern * * allows any amount after the decimal point. If this pattern is specified, there is no rounding
+You can specify multiple patterns in the repricing settings for your person, separated by comma, which are allowed when repricing. For the
+above examples:
+• Example 1 * 0
+• Examples 2 * 0, * 5
+• Examples 3 00, 50
+• Example 4: ** (no rounding)
+7. If setto none, rounding is disabled.
+19
+8. ranking​ ​(​ ​“integer”,​ ​Optional​ ​)​:the desired ranking that BENY tries to achieve, e.g. 1 for the highest rank.
+9. shipping_costs​: (“boolean​”, Optional​ ​) whether or not shipping costs should be taken into account
+10.rating​:(“boolean​”, Optional​ ​) whether or notthe customer ratings should be taken into account
+11. availability​: ​ ​(​ ​“integer”,​ ​Optional​ ​)​ ​the number of days a competitor needs for shipping an item untilthe item gets considered
+“unavailable” by BENY. If none, availability will not be taken into account at all.
+12. discounts​ ​ ​ ​(​ ​“String”,​ ​Optional​ ​)​ ​: how discounts or additions should be treated:
+○ none: discounts and additions will not be taken into account.
+○ absolute: discounts and additions will be considered absolute numbers
+○ relative/netto: discounts and additions will be considered relatively to the net price of an item (i.e. without shipping costs)
+○ relative/brutto: discounts and additions will be considered relatively to the brut price of an item (i.e. with shipping costs included).
+13. sellerurl​ ​(​ ​“String”,​ ​Optional​ ​-​ ​ ​but​ ​if​ ​you​ ​want​ ​to​ ​initial​ ​immediately​ ​please​ ​set​ ​this​ ​value​ ​too​ ​ ​)​:the marketplace-specific URL of your
+shop used “http://myshop.de”
+If​ ​not​ ​of​ ​this​ ​ ​13​ ​fields​ ​names​ ​will​ ​be​ ​set​ ​the​ ​API​ ​response​ ​a​ ​default​ ​error​ ​like:
+{"changed":0,"notes":["Invalid row 0 : Field id invalid"],"unchanged":xx}
+
+
+## 7.2​ ​you​ ​want​ ​to​ ​set​ ​all​ ​settings​ ​in​ ​for​ ​a​ ​dedicated​ ​id​ ​in​ ​csv​ ​format
+```
+data.csv
+Id,min_price,max_price,strategy,underbet,round_patterns,rating,shipping_costs,ranking,availability,discounts,sellerurl
+xid-7369,12272,1919,gentle,0.01,05,true,true,1,7,none,http://<your-hop-url>.com
+```
+REQUEST: POST
+URL: reprice_settings?marketplace=idealo.de&lineend=unix" --data-binary @data.csv -H 'Content-type:text/csv' -X POST
+
+RESPONSE
+```
+{"changed":1,"notes":[],"unchanged":xx}
+```
+
+## 8. GET​ ​Reprice​ ​Settings
+
+Query fields options:
+
+*  marketplace​ (“String”, Required ) In case required fields not setthe API response :
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  format​ (“String”,Optional ) -> defaultis json
+*  ids​ ​ (“String”, Optional )
+*  pformat_dec​ (“integer”, Optional ) -> defaultis integer
+
+### 8.1​ ​you​ ​want​ ​to​ ​get​ ​all​ ​settings​ ​in​ ​for​ ​a​ ​dedicated​ ​id​ ​in​ ​csv​ ​format
+
+REQUEST: GET
+URL: reprice_settings?marketplace=idealo.de&ids=<ARTICLE-ID>"
+
+RESPONSE
+```
+id,min_price,max_price,strategy,underbet,round_patterns,ranking,shipping_costs,rating,availability,discounts
+<ARTICLE-ID>,2272,3419,gentle,0.01,05,1,true,true,7,none
+```
+
+### 8.2​ ​you​ ​want​ ​to​ ​get​ ​all​ ​settings​ ​in​ ​for​ ​a​ ​dedicated​ ​id​ ​in​ ​csv​ ​format​ ​and​ ​the​ ​price​ ​in​ ​dedical​ ​format
+
+REQUEST: GET
+
+URL: reprice_settings?marketplace=idealo.de&ids=<ARTICLE-ID>&pfomat_dec=2"
+
+RESPONSE
+```
+id,min_price,max_price,strategy,underbet,round_patterns,ranking,shipping_costs,rating,availability,discounts
+<ARTICLE-ID>,22.72,34.19,gentle,0.01,05,1,true,true,7,none
+```

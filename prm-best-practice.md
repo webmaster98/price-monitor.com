@@ -227,7 +227,7 @@ URL: /export?marketplace=idealo.de&exportall=false&offeridx=3&ids=<Artikel-iD>
 
 
 RESPONSE
-
+``` 
 [
 {
       "AVAILABILITY": "00-00",
@@ -252,3 +252,4 @@ RESPONSE
       "TOTAL PRICE": 133869 -                     >​ ​ ​COMPETITOR​ ​TOTAl​ ​PRICE
       }
 ]
+``` 

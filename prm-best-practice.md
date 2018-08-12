@@ -335,3 +335,46 @@ RESPONSE
 ```
 {"deleted":2}
 ```
+
+
+## 6. Set​ ​Marketplace​ ​Settings
+
+Query fields options:
+*  marketplace​ (“String”, Required ) In case required fields not setthe API response :
+○ {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
+*  repricing​ (“boolean”,Optional ) -> defaultis on
+*  url​ (“String”, Optional )
+*  ean​ ​(“String”, Optional ) -> defaultis on
+
+### 6.1​ ​You​ ​want​ ​to​ ​set​ ​a​ ​default​ ​url​ ​for​ ​you​ ​marketplace
+
+REQUEST: GET
+
+URL: marketplace_settings?marketplace=idealo.de&url=<SHOP-URL>
+
+RESPONSE
+```
+{"ean":"on","repricing":"on","url":"<SHOP-URL>​"}
+```
+
+### 6.2​ ​You​ ​want​ ​to​ ​set​ ​your​ ​shop​ ​the​ ​repricing​ ​to​ ​off
+
+REQUEST: GET
+
+URL: marketplace_settings?marketplace=idealo.de&repricing=off
+
+RESPONSE
+```
+{"ean":"on","repricing":"off","url":"<SHOP-URL>​"}
+```
+
+
+### Notes
+In case of Amazon, eBay, google or Mercateo.com,the Shop-URL must have the following form:
+http://www.amazon.de/shops/<Your-shop-ID>
+http://stores.ebay.de/ <Your-shop-ID>
+google shop string format like: my shop-online 
+http://www.mercateo.com/<Your-shop-ID>
+
+
+

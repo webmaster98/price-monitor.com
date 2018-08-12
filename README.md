@@ -292,7 +292,7 @@ This function can be used in order to make an export of products that have an er
 | GET           | get_errors
 
 
-
+#### Argumets :
 *  marketplace: the marketplace from which the products shall be exported Please refer to the section Common Data Types for admissible values.
 *  format (optional): the format in which the data shall be returned. Possible values are:
 ○ json: the data will be provided in a JSON list
@@ -304,3 +304,19 @@ of dictionaries,
 
 Either a table in CSV format or a list of JSON dictionaries
 containing the exported data.
+
+
+## Deletion of Products
+This function can be used in order to delete single or multiple products from price monitor.
+
+| HTTP request method:      |   Method       
+| ------------- |:-------------
+| GET           | delete_products
+
+#### Argumets :
+*  marketplace: the marketplace from which the products
+shall be exported Please refer to the section Common
+Data Types for admissible values.
+*  ids: A (possibly comma-separated list of) product IDs
+whose data is to be deleted.
+

@@ -87,7 +87,7 @@ product id (SKU).
 updates. This is only for early integration and testing purposes.
 * pformat_dec (optional): price format , 1=interger, 2=float default is 1
 
-### Return Value:
+### Return Success Value:
 
 The new prices of items for the given marketplace. Only items for which a new
 price could be calculated are returned. JSON format: key-value pairs of the form:
@@ -127,7 +127,7 @@ curl "https://price-monitor.com/api/prm/login/<KEY>/get_price_updates?marketplac
 ]
 ```
 
-### return error code
+###  Return Error Value
 ```json
 {"message":"Field marketplace invalid","reason":"Bad Request","status":400}
 ```

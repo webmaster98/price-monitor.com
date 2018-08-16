@@ -32,10 +32,11 @@ class PriceMonitor {
     }
 
     /**
-     * Perform get price updates GET request.
+     * Perform GET request to get price updates.
 	 * @param  string  $marketplace
      * @param  string  $format (optional) - json or csv
      * @param  bool    $exportAll (optional) - get all products or products with a price update
+     * @param  int     $productId (optional)
      * @param  bool    $test (optional) - get random prices
 	 * @param  int     $priceFormat (optional) - integer (1) or decimal (2)
      * 
@@ -45,6 +46,7 @@ class PriceMonitor {
         string $marketplace,
         string $format = null,
         bool $exportAll = true,
+        int $productId = null,
         bool $test = false,
         int $priceFormat = 1
     ) {
@@ -52,9 +54,187 @@ class PriceMonitor {
             'marketplace' => $marketplace,
             'format' => $format,
             'exportall' => $this->booleanToString($exportAll),
+            'id' => $productId,
             'test' => $this->booleanToString($test),
-            'pformatDec' => $priceFormat
+            'pformat_dec' => $priceFormat
         ]);
+    }
+
+    /**
+     * Perform POST request to update products.
+	 * @param  string  $marketplace
+     * @param  string  $separator (optional) - comma, semicolon or tab
+     * @param  string  $lineEnd (optional) - windows \r\n (win) or unix \n (unix)
+     * @param  bool    $keepOld (optional) - deletes old products from database
+	 * @param  bool    $test (optional) - data won't be saved to database
+     * @param  bool    $cleanOld (optional) - deletes products not included in csv file from database
+     * 
+     * @return string
+     */
+    public function updateProducts(
+        string $csvFilePath,
+        string $marketplace,
+        string $separator = null,
+        string $lineEnd = null,
+        bool $keepOld = false,
+        bool $test = false,
+        bool $cleanOld = false
+    ) {
+        // TODO: add file to path
+        // URl: --data-binary @article-list.csv​ -H 'Content-type: text/csv'
+        // $csvFilePath = '@' . $csvFilePath;
+
+        return $this->postFile("import_products", [
+            'marketplace' => $marketplace,
+            'separator' => $separator,
+            'lineend' => $lineEnd,
+            'keepold' => $this->booleanToString($keepOld),
+            'test' => $this->booleanToString($test),
+            'cleanold' => $this->booleanToString($cleanOld),
+        ]);
+    }
+
+    /**
+     * Perform GET request to get product offers.
+	 * @param  string  $marketplace
+     * @param  string  $format (optional) - json or csv
+     * @param  bool    $exportAll (optional) - get all products or products with a price update
+     * @param  string  $sortBy (optional) - total_price or price or shipping_costs or ranking
+	 * @param  int     $offerId (optional)
+     * @param  array   $productIds (optional)
+     * @param  int     $priceFormat (optional) - integer (1) or decimal (2)
+     * 
+     * @return string
+     */
+    public function getProductOffers(
+        string $marketplace,
+        string $format = null,
+        bool $exportAll = true,
+        string $sortBy = null,
+        int $offerId = null,
+        array $productIds = null,
+        int $priceFormat = 1
+    ) {
+        return $this->get("export", [
+            'marketplace' => $marketplace,
+            'format' => $format,
+            'exportall' => $this->booleanToString($exportAll),
+            'sortby' => $sortBy,
+            'offeridx' => $offerId,
+            'ids' => $productIds,
+            'pformat_dec' => $priceFormat
+        ]);
+    }
+
+    /**
+     * Perform GET request to get products with an error status.
+	 * @param  string  $marketplace
+     * @param  string  $format (optional) - json or csv
+     * 
+     * @return string
+     */
+    public function getProductsWithErrors(
+        string $marketplace,
+        string $format = null
+    ) {
+        return $this->get("get_errors", [
+            'marketplace' => $marketplace,
+            'format' => $format,
+        ]);
+    }
+
+    /**
+     * Perform GET request to delete products.
+	 * @param  string $marketplace
+     * @param  array  $productIds
+     * 
+     * @return string
+     */
+    public function deleteProducts(
+        string $marketplace,
+        array $productIds
+    ) {
+        return $this->get("delete_products", [
+            'marketplace' => $marketplace,
+            'ids' => $productIds,
+        ]);
+    }
+
+    /**
+     * Perform GET request to set marketplace settings.
+	 * @param  string  $marketplace
+     * @param  string  $url
+     * @param  bool    $repricing - on or off
+     * @param  bool    $ean - on or off
+     * 
+     * @return string
+     */
+    public function setMarketplaceSettings(
+        string $marketplace,
+        string $url,
+        string $repricing,
+        string $ean
+    ) {
+        return $this->get("marketplace_settings", [
+            'marketplace' => $marketplace,
+            'url' => $url,
+            'repricing' => $repricing,
+            'ean' => $ean,
+        ]);
+    }
+
+    /**
+     * Perform POST request to set reprice settings.
+	 * @param  string  $marketplace
+     * @param  string  $separator (optional) - comma, semicolon or tab
+     * @param  string  $lineEnd (optional) - windows \r\n (win) or unix \n (unix)
+     * 
+     * @return string
+     */
+    public function setRepriceSettings(
+        string $marketplace,
+        string $separator = null,
+        string $lineEnd = null
+    ) {
+        return $this->post("reprice_settings", [
+            'marketplace' => $marketplace,
+            'separator' => $separator,
+            'lineend' => $lineEnd,
+        ]);
+    }
+
+    /**
+     * Perform GET request to get reprice settings.
+	 * @param  string  $marketplace
+     * @param  string  $format (optional) - json or csv
+     * @param  array   $productIds
+	 * @param  int     $priceFormat (optional) - integer (1) or decimal (2)
+     * 
+     * @return string
+     */
+    public function getRepriceSettings(
+        string $marketplace,
+        string $format = null,
+        array $productIds = null,
+        int $priceFormat = 1
+    ) {
+        //TODO turn id array into comma separated list
+
+        return $this->get("reprice_settings", [
+            'marketplace' => $marketplace,
+            'format' => $format,
+            'ids' => $productIds,
+            'pformat_dec' => $priceFormat
+        ]);
+    }
+
+    /**
+     * Perform GET to get license info.
+     * 
+     * @return string
+     */
+    public function getLicense() {
+        return $this->get("license");
     }
 
     /**
@@ -71,6 +251,44 @@ class PriceMonitor {
         }
         
         return $this->request($path, []);
+    }
+
+    /**
+     * POST request.
+	 * @param  string  $path
+	 * @param  array   $parameters
+     * 
+     * @return string
+     */
+    private function postFile(string $path, array $parameters)
+    {
+        $curlOptions = [
+            CURLOPT_POST => count($parameters),
+            CURLOPT_HTTPHEADER => ['Content-Type: text/csv'],
+            CURLOPT_POSTFIELDS => http_build_query($parameters)
+        ];
+
+        return $this->request($path, $curlOptions);
+    }
+
+    /**
+     * POST request.
+	 * @param  string  $path
+	 * @param  array   $parameters
+     * 
+     * @return string
+     */
+    private function post(string $path, array $parameters = null)
+    {
+        $curlOptions = [
+            CURLOPT_POST => count($parameters)
+        ];
+
+        if($parameters != null) {
+            $options[CURLOPT_POSTFIELDS] = http_build_query($parameters);
+        }
+        
+        return $this->request($path, $curlOptions);
     }
 
     /**

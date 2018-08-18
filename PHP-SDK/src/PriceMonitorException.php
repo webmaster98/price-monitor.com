@@ -1,6 +1,6 @@
 <?php
 
-namespace PriceMonitor;
+namespace WebMaster\PriceMonitor;
 
 class PriceMonitorException extends \Exception {
 

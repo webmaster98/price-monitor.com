@@ -1,0 +1,8 @@
+{
+    "name": "webmaster/price-monitor",
+    "autoload": {
+        "psr-0" : {
+            "WebMaster\\PriceMonitor" : "src"
+        }
+    }
+}

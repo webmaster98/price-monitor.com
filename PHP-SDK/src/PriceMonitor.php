@@ -1,8 +1,8 @@
 <?php
 
-namespace PriceMonitor;
+namespace WebMaster\PriceMonitor;
 
-use PriceMonitor\PriceMonitorException;
+use PriceMonitorException;
 
 class PriceMonitor {
 
@@ -62,6 +62,7 @@ class PriceMonitor {
 
     /**
      * Perform POST request to update products.
+     * @param  string  $productsFile - csv filename containing product list
 	 * @param  string  $marketplace
      * @param  string  $separator (optional) - comma, semicolon or tab
      * @param  string  $lineEnd (optional) - windows \r\n (win) or unix \n (unix)
@@ -72,7 +73,7 @@ class PriceMonitor {
      * @return string
      */
     public function updateProducts(
-        string $csvFilePath,
+        string $productsFile,
         string $marketplace,
         string $separator = null,
         string $lineEnd = null,
@@ -80,11 +81,7 @@ class PriceMonitor {
         bool $test = false,
         bool $cleanOld = false
     ) {
-        // TODO: add file to path
-        // URl: --data-binary @article-list.csv​ -H 'Content-type: text/csv'
-        // $csvFilePath = '@' . $csvFilePath;
-
-        return $this->postFile("import_products", [
+        return $this->postFile("import_products", $productsFile, [
             'marketplace' => $marketplace,
             'separator' => $separator,
             'lineend' => $lineEnd,
@@ -115,6 +112,10 @@ class PriceMonitor {
         array $productIds = null,
         int $priceFormat = 1
     ) {
+        if($productIds != null) {
+            $productIds = $this->arrayToCommaSeparated($productIds);
+        }
+
         return $this->get("export", [
             'marketplace' => $marketplace,
             'format' => $format,
@@ -156,7 +157,7 @@ class PriceMonitor {
     ) {
         return $this->get("delete_products", [
             'marketplace' => $marketplace,
-            'ids' => $productIds,
+            'ids' => $this->arrayToCommaSeparated($productIds),
         ]);
     }
 
@@ -185,6 +186,7 @@ class PriceMonitor {
 
     /**
      * Perform POST request to set reprice settings.
+     * @param  string  $settingsFile - csv filename containing reprice settings
 	 * @param  string  $marketplace
      * @param  string  $separator (optional) - comma, semicolon or tab
      * @param  string  $lineEnd (optional) - windows \r\n (win) or unix \n (unix)
@@ -192,11 +194,12 @@ class PriceMonitor {
      * @return string
      */
     public function setRepriceSettings(
+        string $settingsFile,
         string $marketplace,
         string $separator = null,
         string $lineEnd = null
     ) {
-        return $this->post("reprice_settings", [
+        return $this->postFile("reprice_settings", $settingsFile, [
             'marketplace' => $marketplace,
             'separator' => $separator,
             'lineend' => $lineEnd,
@@ -218,7 +221,9 @@ class PriceMonitor {
         array $productIds = null,
         int $priceFormat = 1
     ) {
-        //TODO turn id array into comma separated list
+        if($productIds != null) {
+            $productIds = $this->arrayToCommaSeparated($productIds);
+        }
 
         return $this->get("reprice_settings", [
             'marketplace' => $marketplace,
@@ -260,34 +265,18 @@ class PriceMonitor {
      * 
      * @return string
      */
-    private function postFile(string $path, array $parameters)
+    private function postFile(string $path, string $filename, array $parameters)
     {
-        $curlOptions = [
-            CURLOPT_POST => count($parameters),
-            CURLOPT_HTTPHEADER => ['Content-Type: text/csv'],
-            CURLOPT_POSTFIELDS => http_build_query($parameters)
-        ];
-
-        return $this->request($path, $curlOptions);
-    }
-
-    /**
-     * POST request.
-	 * @param  string  $path
-	 * @param  array   $parameters
-     * 
-     * @return string
-     */
-    private function post(string $path, array $parameters = null)
-    {
-        $curlOptions = [
-            CURLOPT_POST => count($parameters)
-        ];
-
         if($parameters != null) {
-            $options[CURLOPT_POSTFIELDS] = http_build_query($parameters);
+            $path .= '?'. http_build_query($parameters);
         }
-        
+
+        $curlOptions = [
+            CURLOPT_POST => 1,
+            CURLOPT_HTTPHEADER => ['Content-Type: text/csv'],
+            CURLOPT_POSTFIELDS => file_get_contents($filename)
+        ];
+
         return $this->request($path, $curlOptions);
     }
 
@@ -334,5 +323,16 @@ class PriceMonitor {
     private function booleanToString(bool $boolean)
     {
         return ($boolean) ? 'true' : 'false';
+    }
+
+    /**
+     * Convert array to string.
+	 * @param  array  $list
+     * 
+     * @return string
+     */
+    private function arrayToCommaSeparated(array $list)
+    {
+        return implode(",", $list);
     }
 }

@@ -1,0 +1,15 @@
+requires 'HTTP::Request::Common';
+requires 'IO::Socket::SSL';
+requires 'JSON';
+requires 'LWP::Protocol::https';
+requires 'LWP::UserAgent';
+requires 'Moo';
+requires 'Params::ValidationCompiler';
+requires 'Type::Tiny';
+requires 'URI';
+requires 'namespace::clean';
+requires 'strictures';
+
+
+test_requires 'Test::More';
+test_requires 'Test::Exception';

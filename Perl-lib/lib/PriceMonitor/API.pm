@@ -84,7 +84,7 @@ sub export {
       marketplace => {type => Str},
       format      => {type => FileFormat, optional => 1},
       exportall   => {type => Bool, optional => 1},
-      sortBy      => {type => SortType, optional => 1},
+      sortby      => {type => SortType, optional => 1},
       offeridx    => {type => Int, optional => 1},
       ids         => {type => ArrayRef [Int], optional => 1},
       pformat_dec => {type => PriceFormat, optional => 1},

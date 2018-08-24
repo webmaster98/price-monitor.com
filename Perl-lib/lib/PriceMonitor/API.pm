@@ -8,7 +8,7 @@ use LWP::UserAgent;
 use constant BASE_URL => q{https://price-monitor.com/api/prm/login/};
 
 use Params::ValidationCompiler qw(validation_for);
-use Types::Standard qw( Int Str Bool ArrayRef);
+use Types::Standard qw( Int Str Bool ArrayRef Ids);
 use PriceMonitor::Types qw(FileFormat PriceFormat
   Separator LineEnd Upload
   SortType Repricing
@@ -86,7 +86,7 @@ sub export {
       exportall   => {type => Bool, optional => 1},
       sortby      => {type => SortType, optional => 1},
       offeridx    => {type => Int, optional => 1},
-      ids         => {type => ArrayRef [Int], optional => 1},
+      ids         => {type => Ids, optional => 1},
       pformat_dec => {type => PriceFormat, optional => 1},
     }
   );
@@ -109,7 +109,7 @@ sub get_errors {
 sub delete_products {
   my $self = shift;
   state $v = validation_for(
-    params => {marketplace => {type => Str}, ids => {type => ArrayRef [Int]},});
+    params => {marketplace => {type => Str}, ids => {type => Ids},});
   my (%args) = $v->(@_);
   $self->_make_request(GET $self->_uri_for(delete_products => \%args));
 }
@@ -134,7 +134,7 @@ sub get_reprice_settings {
     params => {
       marketplace => {type => Str},
       format      => {type => FileFormat, optional => 1},
-      ids         => {type => ArrayRef [Int], optional => 1},
+      ids         => {type => Ids, optional => 1},
       pformat_dec => {type => PriceFormat, optional => 1},
     }
   );
@@ -159,7 +159,6 @@ sub set_reprice_settings {
 
 sub _make_request {
   my ($self, $req) = @_;
-  warn $req->as_string;
   my $res = $self->_user_agent->request($req);
   if (!$res->is_success) {
     my $message = '(empty)';

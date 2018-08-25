@@ -1,5 +1,8 @@
 from pyvalid.validators import is_validator
 import os
+import re
+
+
 class Validator(object):
     @classmethod
     @is_validator
@@ -37,3 +40,9 @@ class Validator(object):
     @is_validator
     def repricing(cls, val):
         return isinstance(val, str) and val in ('on', 'off')
+
+    @classmethod
+    @is_validator
+    def ids(cls, val):
+        return (isinstance(val, str) and re.match('^\d+(?:,\d+)*$', val)) or \
+            isinstance(val, list) and all([isinstance(e, int) for e in val])

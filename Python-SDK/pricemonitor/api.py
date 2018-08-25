@@ -62,10 +62,14 @@ class Api():
         exportall=bool,
         sortby=Validator.sort_type,
         offeridx=int,
-        ids=list,
+        ids=Validator.ids,
         pformat_dec=Validator.price_format)
     def export(self, **kwargs):
         assert kwargs.get('marketplace') is not None
+        ids = kwargs.get('ids')
+        if ids is not None and isinstance(ids, list):
+            kwargs['ids'] =  ','.join(ids)
+            
         return requests.get(
             self._uri_for('export'), params=kwargs, verify=False)
 
@@ -75,10 +79,14 @@ class Api():
         return requests.get(
             self._uri_for('get_errors'), params=kwargs, verify=False)
 
-    @accepts(object, marketplace=str, ids=list)
+    @accepts(object, marketplace=str, ids=Validator.ids,)
     def delete_products(self, **kwargs):
         assert kwargs.get('marketplace') is not None
         assert kwargs.get('ids') is not None
+        ids = kwargs.get('ids')
+        if isinstance(ids, list):
+            kwargs['ids'] =  ','.join(ids)
+
         return requests.get(
             self._uri_for('get_errors'), params=kwargs, verify=False)
 
@@ -100,10 +108,15 @@ class Api():
         object,
         marketplace=str,
         format=Validator.file_format,
-        ids=list,
+        ids=Validator.ids,
         pformat_dec=Validator.price_format)
     def get_reprice_settings(self, **kwargs):
         assert kwargs.get('marketplace') is not None
+        ids = kwargs.get('ids')
+        if ids is not None and isinstance(ids, list):
+            kwargs['ids'] =  ','.join(ids)
+
+        
         return requests.get(
             self._uri_for('reprice_settings'), params=kwargs, verify=False)
 

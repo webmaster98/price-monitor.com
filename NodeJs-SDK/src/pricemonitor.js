@@ -115,9 +115,13 @@ export default class PriceMonitorApi {
     ids = null,
     pformat_dec = null
   }) {
+    var args = arguments[0];
+    if (args.ids && args.ids instanceof Array) {
+      args.ids = args.ids.join(',');
+    }
     return this.doRequest(this.makeRequestHeader(this.makeUri({
       pathname: 'export',
-      query: arguments[0]
+      query: args
     })));
   }
 
@@ -135,9 +139,14 @@ export default class PriceMonitorApi {
     marketplace,
     ids
   }) {
+    var args = arguments[0];
+    if (args.ids instanceof Array) {
+      args.ids = args.ids.join(',');
+    }
+
     return this.doRequest(this.makeRequestHeader(this.makeUri({
       pathname: 'delete_products',
-      query: arguments[0]
+      query: args
     })));
   }
 
@@ -159,9 +168,14 @@ export default class PriceMonitorApi {
     ids = null,
     pformat_dec = null
   }) {
+    var args = arguments[0];
+    if (args.ids && args.ids instanceof Array) {
+      args.ids = args.ids.join(',');
+    }
+
     return this.doRequest(this.makeRequestHeader(this.makeUri({
       pathname: 'reprice_settings',
-      query: arguments[0]
+      query: args
     })));
   }
 

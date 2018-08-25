@@ -17,6 +17,7 @@ use JSON qw(encode_json decode_json);
 use HTTP::Request::Common qw(GET POST PUT DELETE);
 use URI;
 
+
 has api_key => (is => 'ro', required => 1);
 
 has _user_agent => (
@@ -140,7 +141,7 @@ sub get_reprice_settings {
   );
   my (%args) = $v->(@_);
   $self->_make_request(GET $self->_uri_for(reprice_settings => \%args));
-  
+
 }
 
 sub set_reprice_settings {
@@ -154,7 +155,7 @@ sub set_reprice_settings {
   );
   my (%args) = $v->(@_);
   $self->_make_request(POST $self->_uri_for(reprice_settings => \%args));
-  
+
 }
 
 sub _make_request {
@@ -180,3 +181,32 @@ sub _make_request {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+PriceMonitor::API -- a client library for price-monitor.com
+
+=head1 SYNOPSIS
+
+
+    my $api = PriceMonitor::API->new(api_key => 'acbd18db4cc2f85cedef654fccc4a4d8');
+    # Returns a HTTP::Response
+    my $response = $api->get_price_updates(marketplace => 'amazon.de')
+  
+=head1 METHODS
+
+=over
+
+=item C<get_price_updates(marketplace =E<gt> Str [, format =E<gt> 'json|csv', exportall =E<gt> Bool, id =E<gt> Int, test =E<gt> Bool, pformat_dec =E<gt> 1|2 (integer or decimal) ])>
+
+=item C<import_products(marketplace =E<gt> Str,  file =E<gt> => FilePath [, separator =E<gt> 'comma|semicolon|tab', lineend =E<gt> 'win|unix', keepold =E<gt> Bool, cleanod =E<gt> Bool, test =E<gt> Bool])>
+
+=back
+
+=cut

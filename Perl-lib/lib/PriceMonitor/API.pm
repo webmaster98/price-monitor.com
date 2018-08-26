@@ -194,18 +194,129 @@ PriceMonitor::API -- a client library for price-monitor.com
 
 =head1 SYNOPSIS
 
-
     my $api = PriceMonitor::API->new(api_key => 'acbd18db4cc2f85cedef654fccc4a4d8');
     # Returns a HTTP::Response
     my $response = $api->get_price_updates(marketplace => 'amazon.de')
   
 =head1 METHODS
 
+All methods described below return a L<HTTP::Response>.
+
 =over
 
-=item C<get_price_updates(marketplace =E<gt> Str [, format =E<gt> 'json|csv', exportall =E<gt> Bool, id =E<gt> Int, test =E<gt> Bool, pformat_dec =E<gt> 1|2 (integer or decimal) ])>
+=item C<get_price_updates(marketplace =E<gt> Str [, format =E<gt> 'json|csv', exportall =E<gt> Bool, id =E<gt> Int, test =E<gt> Bool, pformat_dec =E<gt> 1|2 (1 for integer format, 2 for decimal) ])>
 
-=item C<import_products(marketplace =E<gt> Str,  file =E<gt> => FilePath [, separator =E<gt> 'comma|semicolon|tab', lineend =E<gt> 'win|unix', keepold =E<gt> Bool, cleanod =E<gt> Bool, test =E<gt> Bool])>
+Response formats example:
+
+=over
+
+=item C<?format=json>
+
+  [{"id":"44556677","new_price": 55884 ,"old_price": 55885}]
+
+=item C<?format=csv>
+
+  Id,new_price,old_price
+  44556677,558.84,558.85
+
+=back
+
+=item C<import_products(marketplace =E<gt> Str,  file =E<gt> FilePath [, separator =E<gt> 'comma|semicolon|tab', lineend =E<gt> 'win|unix', keepold =E<gt> Bool, cleanod =E<gt> Bool, test =E<gt> Bool])>
+
+Example of CSV
+
+  Id,ean,id_on_marketplace,category,mpn,manufacturer,model,name_on_marketplace,min_price,max_price
+  <Artikel-iD>,7611382551115,,Armbanduhr,XS.3051,Luminox,<NAME_ON_MPlace>,16710, 69800
+  <Artikel-iD>,7611382551122,,Armbanduhr,XS.3059,Luminox,<NAME_ON_MPlace>,15120, 69800
+
+
+=item C<export(marketplace =E<gt> Str [, format =E<gt> 'json|csv', exportall =E<gt> 1|0, sortby =E<gt> 'total_price|price|shipping_costs|ranking', offeridx =E<gt> Int, pformat_dec =E<gt> 1|2 (1 for integer format, 2 for decimal)])>
+
+Example:
+
+  $api->export(marketplace => 'idealo.de', exportall => 0, offeridx => 3, ids=8877
+
+Response:
+
+    [{
+      "AVAILABILITY": "00-00",
+      "BEST OFFERER": "crowdfox.com", // BEST OFFERER NAME
+      "BEST PRICE": 133869, // BEST TOTAL  PRICE OF COMPETITOR
+      "CATEGORY": "Deutsch>Waschen & Trocknen>Waschmaschinen>Frontlader",
+      "EAN": "7332543382378",
+      "ID": "<Artikel-iD>",
+      "LAST UPDATE": "2017-10-20T21:45:08.684Z",
+      "MANUFACTURER": "Electrolux Professional",
+      "MODEL": "Electrolux MyPro WE170P Gewerbliche Waschvollautomat",
+      "MPN": "",
+      "NEW PRICE": 13386800, // -> OWN ARTICLE PRICE SUGGESTION
+      "OLD PRICE": 133869, // -> COMPETITOR PRICE
+      "PRICE CHANGE": "0.17 (0.01%)", // OWN PRICE CHANGES
+      "PRODUCT NAME": "MyPro WE 170 P", // COMPETITOR NAME
+      "RANKING": 3, //  COMPETITOR RANKING
+      "SHIPPING COSTS": 0, // COMPETITOR SHIPPING COSTS
+      "SHOP": "mediadeal.de", // COMPETITOR NAME
+      "SHOP_URL": "mediadeal.de", // COMPETITOR URL
+      "STATUS": "ON/OK", // OWN ARTICLE STATUS
+      "TOTAL PRICE": 133869 // COMPETITOR TOTAl PRICE
+      }]
+  
+=item C<get_errors( marketplace => Str [, format =E<gt> 'json|csv'])>
+
+Response:
+
+  {
+    "Availability": "",
+    "Best OFFERER": "",
+    "BEST PRICE": null,
+    "CATEGORY": "Deutsch>Haushalt Kleingeräte>Haushalt",
+    "EAN": " 5KSM125PSEOB",
+    "ID": "<Artikel-iD>",
+    "LAST UPDATE": "2017-10-20T21:48:15.711Z",
+    "MANUFACTURER": "KitchenAid",
+    "MODEL": "KitchenAid Artisan 5KSM125EOB Küchenmaschine Onyx-Schwarz",
+    "MPN": "",
+    "NEW PRICE": null,
+    "OLD PRICE": null,
+    "PRICE CHANGE": "",
+    "PRODUCT NAME": "KitchenAid Artisan 5KSM125EOB Küchenmaschine Onyx-Schwarz",
+    "RANKING": "",
+    "SHIPPING COSTS": null,
+    "SHOP": "etrona.at",
+    "SHOP_URL": "http://www.etrona.at",
+    "STATUS": "ON/NO_RESULT",
+    "TOTAL PRICE": null
+  }
+
+Notes:
+
+The following error messages occurs in different cases:
+
+=over 
+
+=item  "ERROR_EAN", -- missing ean in product
+
+=item  "ON/MISSING_MANDATORIES", -- missing shop or seller_url
+
+=item  "ON/NO_RESULT", --  there are no competitors and productfound
+
+=item  "ON/OWN_PRODUCT_NOT_FOUND" -- competitors exists buttarget product notfound
+
+=item  "ON/UNKNOWN_ERROR" -- data transfer error (proxy error,timeout error, bad response from marketplace, etc .. )
+
+=back
+
+=item C<delete_products( marketplace =E<gt> Str, ids =E<gt> Str|ArrayRef[Int] (string of comma separated list of ids or an arrayref of ids))>
+
+Example:
+
+  $api->delete_products(marketplace => 'idealo.de', ids => 11)
+  $api->delete_products(marketplace => 'idealo.de', ids => '11,22,33,44');
+  $api->delete_products(marketplace => 'idealo.de', ids => [11,22,33,44]);
+
+Response:
+
+  {"deleted": 252}
 
 =back
 

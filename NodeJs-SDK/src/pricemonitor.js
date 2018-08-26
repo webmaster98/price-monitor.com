@@ -24,6 +24,9 @@ export default class PriceMonitorApi {
     }
   }
 
+  /**
+   * @ignore
+   */
   async doRequest(requestOptions) {
     const options = {
       ...this.baseOptions,
@@ -42,6 +45,9 @@ export default class PriceMonitorApi {
     return response;
   }
 
+  /**
+   * @ignore
+   */
   makeRequestHeader(uri, options = {}) {
     return {
       rejectUnauthorized: this.strictSSL,
@@ -52,6 +58,9 @@ export default class PriceMonitorApi {
     };
   }
 
+  /**
+   * @ignore
+   */
   makeUri({
     pathname,
     query,
@@ -67,6 +76,20 @@ export default class PriceMonitorApi {
     return decodeURIComponent(uri);
   }
 
+  /**
+   * Perform GET request to get price updates.
+   * @param {Object} param - param
+   * @param  {!string} param.marketplace -  ex: `idealo.de`, `google.de`
+   * @param  {?string} param.format - `json` or `csv`
+   * 
+   * @return {Promise}
+   *
+   * @example
+   * var api = new PriceMonitorApi({ apiKey: 'abcdef123123'});
+   * api.getPriceUpdates({ marketplace: 'idealo.de', format: "json"})
+   *    .then(function(response){ ... });
+   *
+   */
   getPriceUpdates({
     marketplace,
     format = null,
@@ -81,9 +104,29 @@ export default class PriceMonitorApi {
     })));
   }
 
+  /**
+   * Perform POST request to update products.
+   * @param {Object} param - param
+   * @param  {!string}  param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {!string}  param.file - csv filename containing product list
+   * @param  {?string}  param.separator  - `comma`, `semicolon` or `tab`
+   * @param  {?string}  param.lineend  - windows \r\n (`win`) or unix \n (`unix`)
+   * @param  {?boolean}    param.keepold  - deletes old products from database
+   * @param  {?boolean}    param.cleanold  - deletes products not included in csv file from database
+   * @param  {?boolean}    param.test  - data won't be saved to database
+   *
+   * 
+   * @return {Promise}
+   *
+   * @example
+   * var api = new PriceMonitorApi({ apiKey: 'abcdef123123'});
+   * api.importProducts({ marketplace: 'idealo.de', file: '/path/to/file.csv', separator: 'comma'})
+   *    .then(function(response){ ... });
+   *
+   */
   importProducts({
-    file,
     marketplace,
+    file,
     separator = null,
     lineend = null,
     keepold = null,
@@ -106,6 +149,30 @@ export default class PriceMonitorApi {
     }));
   }
 
+  /**
+   * Perform GET request to get product offers.
+   * @param  {Object} param - param   
+   * @param  {!string} param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {?string} param.format  - `json` or `csv`
+   * @param  {?boolean}   param.exportall  - get all products or products with a price update
+   * @param  {?string} param.sortby  - `total_price` or `price` or `shipping_costs` or `ranking`
+   * @param  {?number}    param.offerid  - integer id
+   * @param  {?(string|number[])} param.ids - comma separated list if ids or array of ids 
+   * @param  {?number}    param.pformat_dec - integer (1) or decimal (2)
+   * 
+   * @return {Promise}
+   *
+   * @example <caption>Using array of ids</caption>
+   * var api = new PriceMonitorApi({ apiKey: 'abcdef123123'});
+   * api.exportProducts({ marketplace: 'idealo.de', format: 'json', ids: [33,981,32]})
+   *    .then(function(response){ ... });
+   *
+   * @example <caption>Using of string with comma separated ids</caption>
+   * var api = new PriceMonitorApi({ apiKey: 'abcdef123123'});
+   * api.exportProducts({ marketplace: 'idealo.de', format: 'json', ids: '33,981,32'})
+   *    .then(function(response){ ... });
+   *
+   */
   exportProducts({
     marketplace,
     format = null,
@@ -125,6 +192,14 @@ export default class PriceMonitorApi {
     })));
   }
 
+  /**
+   * Perform GET request to get products with an error status.
+   * @param  {Object} param - param      
+   * @param  {!string} param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {?string} param.format - `json` or `csv`
+   * 
+   * @return {Promise}
+   */
   getErrors({
     marketplace,
     format = null,
@@ -134,6 +209,15 @@ export default class PriceMonitorApi {
       query: arguments[0]
     })));
   }
+
+  /**
+   * Perform GET request to delete products.
+   * @param  {Object} param - param      
+   * @param  {!string} param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {!(string|number[])} param.ids - comma separated list if ids or array of ids
+   * 
+   * @return {Promise}
+   */
 
   deleteProducts({
     marketplace,
@@ -150,6 +234,18 @@ export default class PriceMonitorApi {
     })));
   }
 
+
+  /**
+   * Perform GET request to set marketplace settings.
+   * @param  {Object} param - param         
+   * @param  {!string}  param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {!string}  param.url
+   * @param  {!boolean}    param.repricing - `on` or `off`
+   * @param  {!boolean}    param.ean 
+   * 
+   * @return {Promise}
+   */
+
   marketplaceSettings({
     marketplace,
     url,
@@ -162,6 +258,21 @@ export default class PriceMonitorApi {
     })));
   }
 
+  /**
+   * Perform GET request to get reprice settings.
+   * @param  {Object} param - param         
+   * @param  {!string}  param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {?string}  param.format - `json` or `csv`
+   * @param  {?(string|number[])}   param.ids - comma separated list if ids or array of ids 
+   * @param  {?number}     param.pformat_dec - integer (1) or decimal (2)
+   * 
+   * @return {Promise}
+   * @example
+   * var api = new PriceMonitorApi({ apiKey: 'abcdef123123'});
+   * api.getRepriceSettings({ marketplace: 'idealo.de', format : 'csv', pformat_dec: 2})
+   *    .then(function(response){ ... });
+   *
+   */
   getRepriceSettings({
     marketplace,
     format = null,
@@ -179,6 +290,15 @@ export default class PriceMonitorApi {
     })));
   }
 
+  /**
+   * Perform POST request to get reprice settings.
+   * @param  {Object} param - param         
+   * @param  {!string}  param.marketplace - ex: `idealo.de`, `google.de`
+   * @param  {?string}  param.separator  - `comma`, `semicolon` or `tab`
+   * @param  {?string}  param.lineend  - windows \r\n (`win`) or unix \n (`unix`)
+   *
+   * @return {Promise}
+   */
   setRepriceSettings({
     marketplace,
     separator = null,

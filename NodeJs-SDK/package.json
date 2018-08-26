@@ -47,6 +47,8 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-mocha": "^4.8.0",
+    "esdoc-standard-plugin": "",
+    "esdoc-ecmascript-proposal-plugin": "",
     "mocha": "^5.2.0",
     "release-script": "^1.0.1"
   }

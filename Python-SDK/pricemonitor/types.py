@@ -40,7 +40,13 @@ class Validator(object):
     @is_validator
     def repricing(cls, val):
         return isinstance(val, str) and val in ('on', 'off')
-
+    
+    @classmethod
+    @is_validator
+    def ean(cls, val):
+        return isinstance(val, str) and val in ('on', 'off')
+    
+    
     @classmethod
     @is_validator
     def ids(cls, val):

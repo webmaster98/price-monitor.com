@@ -28,6 +28,9 @@ declare SortType, as Enum [qw(total_price price shipping_costs ranking)],
 declare Repricing, as Enum [qw(on off)],
   message {'Repricing should be either "on" or "off"'};
 
+declare EAN, as Enum [qw(on off)],
+  message {'EAN should be either "on" or "off"'};
+
 declare Ids, as Str, where {/^\d+(?:,\d+)*$/};
 
 coerce Ids, from ArrayRef [Int], via { join(q{,}, @$_) };

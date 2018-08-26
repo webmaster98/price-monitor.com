@@ -28,7 +28,7 @@ class Validator(object):
     @is_validator
     def upload(cls, val):
         return isinstance(val, str) and os.path.isfile(val) and os.path.exists(val) \
-            and os.access(file, os.R_OK)
+            and os.access(val, os.R_OK)
 
     @classmethod
     @is_validator

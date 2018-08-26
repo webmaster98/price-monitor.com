@@ -11,7 +11,7 @@ use Params::ValidationCompiler qw(validation_for);
 use Types::Standard qw( Int Str Bool ArrayRef Ids);
 use PriceMonitor::Types qw(FileFormat PriceFormat
   Separator LineEnd Upload
-  SortType Repricing
+  SortType Repricing EAN
 );
 use JSON qw(encode_json decode_json);
 use HTTP::Request::Common qw(GET POST PUT DELETE);
@@ -122,7 +122,7 @@ sub marketplace_settings {
       marketplace => {type => Str},
       url         => {type => Str},
       repricing   => {type => Repricing},
-      ean         => {type => Str}
+      ean         => {type => Ean}
     }
   );
   my (%args) = $v->(@_);
@@ -149,13 +149,17 @@ sub set_reprice_settings {
   state $v = validation_for(
     params => {
       marketplace => {type => Str},
+      file        => {type => Upload},
       separator   => {type => Separator, optional => 1},
       lineend     => {type => LineEnd, optional => 1},
     }
   );
   my (%args) = $v->(@_);
-  $self->_make_request(POST $self->_uri_for(reprice_settings => \%args));
-
+  $self->_make_request(
+    POST $self->_uri_for(reprice_settings => \%args),
+    Content_Type => 'text/csv',
+    Content      => do { local (*ARGV, $/) = [$file]; <> }
+  );
 }
 
 sub _make_request {
@@ -317,6 +321,19 @@ Example:
 Response:
 
   {"deleted": 252}
+
+=item C<marketplace_settings( marketplace =E<gt> Str, url =E<gt> Str, repricing =E<gt> 'on'|'off', ean =E<gt> 'on'|'off')>
+
+Example:
+
+  $api->marketplace_settings(marketplace => 'idealo.de', url => 'foo.de', repricing => 'off');
+  
+=item C<get_repricing_settings( marketplace =E<gt> Str [, format =E<gt> 'json|csv', ids =E<gt> Str|ArrayRef[Int] (string of comma separated list of ids or an arrayref of ids), pformat_dec =E<gt> 1|2 (1 for integer format, 2 for decimal)])>
+
+=item C<set_repricing_settings(marketplace =E<gt> Str, file =E<gt> Str (readable file path) [ ,separator =E<gt> 'comma|semicolon|tab', lineend =E<gt> 'win|unix'])>
+
+
+=item
 
 =back
 

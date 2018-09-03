@@ -10,7 +10,7 @@ Include PriceMonitor.cs and ListMarketplaces.cs  in your project.
 Pass your api key to the price monitor object and you are ready to go!
 
 ```
-				String yourApiKey = "your_Api_key_here";
+		String yourApiKey = "your_Api_key_here";
                 PriceMonitor monitor = new PriceMonitor(yourApiKey);
 
                 String marketplace = "google.de";

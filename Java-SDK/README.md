@@ -11,7 +11,7 @@ Pass your api key to the price monitor object and you are ready to go!
 ```
     String apiKey = "your api key here";
     PriceMonitor monitor = new PriceMonitor(apiKey);
-	String responseGetPriceUpdates = monitor.getPriceUpdates("idealo.de", "your id here", Format.JSON, Pformat_dec.FLOAT, ExportAll.TRUE, Test.FALSE);
+    String responseGetPriceUpdates = monitor.getPriceUpdates("idealo.de", "your id here", Format.JSON, Pformat_dec.FLOAT, ExportAll.TRUE, Test.FALSE);
     System.out.println(responseGetPriceUpdates);
     String responseUpdateProducts = monitor.updateProducts("idealo.de", "your CSV products list here", Separator.COMMA, Lineend.WIN, Keepold.TRUE, Test.FALSE, Cleanold.TRUE);
     System.out.println(responseUpdateProducts);

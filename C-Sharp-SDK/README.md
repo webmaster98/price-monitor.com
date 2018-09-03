@@ -1,14 +1,15 @@
 
-	Price Monitor C# SDK
-	This is the C# sdk for the price monitor api
+## Price Monitor C# SDK
+This is the C# sdk for the price monitor api
 
-	Installation
-	Include PriceMonitor.cs and ListMarketplaces.cs  in your project.
+### Installation
+Include PriceMonitor.cs and ListMarketplaces.cs  in your project.
 
 
-	Usage
-	Pass your api key to the price monitor object and you are ready to go!
+### Usage
+Pass your api key to the price monitor object and you are ready to go!
 
+```
 				String yourApiKey = "your_Api_key_here";
                 PriceMonitor monitor = new PriceMonitor(yourApiKey);
 
@@ -38,3 +39,4 @@
 	GetRepriceSettings()
 	GetLicense()
 	These methods return the response from the api as a string (either json or csv depending on format selected - the default is json).
+```

@@ -1,12 +1,13 @@
-##Price Monitor JAVA SDK
+## Price Monitor JAVA SDK
 This is the JAVA sdk for the price monitor api
 
-###Installation
+### Installation
 Include PriceMonitor.java, ListMarketplaces.java and CertificateUtils.java  in your project.
 
 
-###Usage
+### Usage
 Pass your api key to the price monitor object and you are ready to go!
+
 ```
     String apiKey = "your api key here";
     PriceMonitor monitor = new PriceMonitor(apiKey);

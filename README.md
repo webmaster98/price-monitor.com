@@ -53,6 +53,7 @@ cases, this can be specified by a HTTP query argument called marketplace. Admiss
 9. billiger.de
 10. geizhals.de
 11. B2B Marketplaces
+12. chrono24.de
 
 if you need to monitor prices in additional marketplaces like [Marketplace links](https://github.com/webmaster98/price-monitor.com/blob/master/M-list.txt) or at a dedicated one please send us a email at webmaster@price-monitor.com !!
 
